@@ -46,16 +46,15 @@ export const SERIES: Record<
 };
 
 export const NAV: { label: string; href: string; series?: SeriesKey }[] = [
-  { label: "PLAN B", href: "/plan-b", series: "plan-b" },
-  { label: "Sprzęt i sklep", href: "/sklep", series: "plan-b" },
-  { label: "Poradniki", href: "/poradniki", series: "plan-b" },
-  { label: "Checklisty", href: "/checklista", series: "plan-b" },
-  { label: "Aktualności", href: "/sygnal", series: "sygnal" },
+  { label: "Sklep", href: "/sklep", series: "plan-b" },
+  { label: "Instrukcje", href: "/instrukcje", series: "plan-b" },
+  { label: "PDF-y", href: "/pdfy", series: "plan-b" },
 ];
 
 /** Media: dostępne w pasku górnym, menu mobilnym i stopce. */
 export const MEDIA_NAV = [
   { label: "SYGNAŁ", href: "/sygnal" },
+  { label: "PLAN B", href: "/plan-b" },
   { label: "KONTEKST", href: "/kontekst" },
   { label: "Wideo", href: "/wideo" },
 ];

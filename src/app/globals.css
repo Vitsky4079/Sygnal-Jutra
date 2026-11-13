@@ -2,13 +2,14 @@
 
 /* Sygnał Jutra design tokens. Series colours are official and must not change. */
 :root {
-  --bg: #080f1d;
-  --bg-2: #0d192a;
-  --surface: #132237;
-  --bg-3: #0c1626;
-  --line: #27354a;
-  --text: #f6f7fa;
-  --muted: #93a5ba;
+  /* Neutralne tony dobrane do fotografii „blue hour”; akcenty marek niżej bez zmian. */
+  --bg: #071321;
+  --bg-2: #0b1829;
+  --surface: #101e30;
+  --bg-3: #050d18;
+  --line: #1f3047;
+  --text: #f4f6f8;
+  --muted: #99aabb;
 
   --sygnal: #ff713d;
   --kontekst: #36cff0;
@@ -61,7 +62,7 @@ h1, h2, h3, h4 {
 
 ::selection {
   background: var(--sygnal);
-  color: #080f1d;
+  color: #050d18;
 }
 
 /* Layout primitives */
@@ -173,4 +174,33 @@ h1, h2, h3, h4 {
   [data-sm-root]:not([data-sm-ready]) [data-sm="mast"] { transform: translateY(105%); }
   [data-sm-root]:not([data-sm-ready]) [data-sm="line"] { transform: scaleX(0); }
   [data-sm-root]:not([data-sm-ready]) [data-sm="media"] { clip-path: inset(100% 0 0 0); }
+}
+
+/* Typografia kampanii: wersaliki Archivo, ciasna interlinia */
+.display {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.95;
+  text-wrap: balance;
+}
+.dot-sygnal::after { content: "."; color: var(--sygnal); }
+
+/* Filmowe obrazy: delikatny „grade” i ziarno zamiast gradientowych plam */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Stan przed wejściem sekcji filmowych (GSAP zdejmuje data-cine-ready); bez JS odsłania <noscript> */
+@media (prefers-reduced-motion: no-preference) {
+  [data-cine]:not([data-cine-ready]) [data-c="img"] { opacity: 0; transform: scale(1.08); }
+  [data-cine]:not([data-cine-ready]) [data-c="line"] { transform: translateY(110%); }
+  [data-cine]:not([data-cine-ready]) [data-c="fade"] { opacity: 0; }
 }

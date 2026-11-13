@@ -1,0 +1,883 @@
+[
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "xiaomi-10000-22-5w-lite",
+    "category": "zasilanie",
+    "tier": "budzetowy",
+    "brand": "Xiaomi",
+    "model": "Power Bank 10000 mAh 22,5 W Lite",
+    "description": "Kompaktowy powerbank 10 000 mAh z szybkim ładowaniem do 22,5 W przez USB-C i USB-A.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "10 000 mAh (ok. 37 Wh)"
+      },
+      {
+        "label": "Moc maks.",
+        "value": "22,5 W"
+      },
+      {
+        "label": "Porty",
+        "value": "USB-C (we/wy), USB-A"
+      },
+      {
+        "label": "Waga",
+        "value": "ok. 227 g"
+      }
+    ],
+    "pricePLN": 79.0,
+    "retailer": "x-kom",
+    "retailerUrl": "https://www.x-kom.pl/p/1353305-powerbank-xiaomi-powerbank-10000mah-225-w-lite-gl.html",
+    "manufacturerUrl": "https://www.mi.com/global/product/xiaomi-power-bank-10000mah-22w-lite/specs",
+    "useCase": "Rezerwa do ładowania telefonu, latarki lub radia USB podczas kilkugodzinnej albo jednodniowej przerwy w dostawie prądu.",
+    "pros": [
+      "Niska cena i mała waga",
+      "Szybkie ładowanie 22,5 W",
+      "Mieści się w kieszeni i plecaku ewakuacyjnym"
+    ],
+    "cons": [
+      "Realnie ok. 1–2 pełne ładowania smartfona",
+      "Za mała moc na laptopa"
+    ],
+    "notes": "Liczba portów USB-A różni się między źródłami.",
+    "metric": {
+      "label": "Energia",
+      "value": 37,
+      "unit": "Wh",
+      "note": "ok. 27,5 Wh na wyjściu 5 V"
+    }
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "anker-a1383-20k-87w",
+    "category": "zasilanie",
+    "tier": "polecany",
+    "brand": "Anker",
+    "model": "Power Bank 20K 87 W (A1383)",
+    "description": "Powerbank 20 000 mAh z USB-C PD do 65 W na jeden port i wbudowanym kablem USB-C.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "20 000 mAh"
+      },
+      {
+        "label": "Moc maks.",
+        "value": "87 W łącznie, 65 W na USB-C"
+      },
+      {
+        "label": "Porty",
+        "value": "Wbudowany kabel USB-C, USB-C, USB-A"
+      },
+      {
+        "label": "Waga",
+        "value": "ok. 440 g"
+      },
+      {
+        "label": "Ładowanie",
+        "value": "ok. 1,5 h ładowarką 65 W"
+      }
+    ],
+    "pricePLN": 229.0,
+    "retailer": "x-kom",
+    "retailerUrl": "https://www.x-kom.pl/p/1274220-powerbank-anker-power-bank-20000mah-87w-z-wbudowanym-kablem-usb-c.html",
+    "manufacturerUrl": "https://www.anker.com/uk/products/a1383",
+    "useCase": "Telefony kilku domowników, tablet albo laptop USB-C przez 1–3 dni przerwy w dostawie prądu.",
+    "pros": [
+      "65 W USB-C naładuje laptopa",
+      "Wbudowany kabel: nie trzeba pamiętać o przewodzie",
+      "Szybko się ładuje, ok. 1,5 h"
+    ],
+    "cons": [
+      "Ciężki do noszenia na co dzień",
+      "Bez gniazda 230 V: nie zasili urządzeń sieciowych"
+    ],
+    "notes": "Cena regularna 229 zł; w dniu sprawdzenia dostępna promocja z kodem do 30.11.2026 (149 zł). Producent nie podaje Wh.",
+    "metric": {
+      "label": "Energia",
+      "value": 74,
+      "unit": "Wh",
+      "note": "wyliczone z 20 000 mAh × 3,7 V"
+    }
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "ecoflow-river-3-plus",
+    "category": "zasilanie",
+    "tier": "premium",
+    "brand": "EcoFlow",
+    "model": "RIVER 3 Plus",
+    "description": "Przenośna stacja zasilania LiFePO4 286 Wh z trzema gniazdami 230 V i funkcją UPS.",
+    "specs": [
+      {
+        "label": "Akumulator",
+        "value": "LiFePO4, rozbudowa do 858 Wh"
+      },
+      {
+        "label": "Wyjście 230 V",
+        "value": "3 gniazda, 600 W (X-Boost 1200 W), czysta sinusoida"
+      },
+      {
+        "label": "Pozostałe",
+        "value": "USB-C 100 W, 2× USB-A, gniazdo 12 V"
+      },
+      {
+        "label": "Ładowanie",
+        "value": "Z sieci ok. 1 h, solar do 220 W, UPS < 10 ms"
+      },
+      {
+        "label": "Waga",
+        "value": "4,7 kg"
+      }
+    ],
+    "pricePLN": 1499.0,
+    "retailer": "sklep.ecoflow.com.pl (autoryzowany sklep)",
+    "retailerUrl": "https://sklep.ecoflow.com.pl/product-pol-48407-Przenosna-stacja-EcoFlow-RIVER-3-Plus.html",
+    "manufacturerUrl": "https://www.ecoflow.com/eu/river-3-plus-portable-power-station",
+    "useCase": "Router, światło, ładowarki i laptop przez wiele godzin awarii. Według producenta: router 10 W ok. 20 h, lodówka 120 W ok. 1,9 h.",
+    "pros": [
+      "Gniazda 230 V zasilą zwykłe urządzenia domowe",
+      "Trwałe ogniwa LiFePO4 i ładowanie w ok. 1 h",
+      "Działa jako UPS dla routera lub komputera"
+    ],
+    "cons": [
+      "Waga 4,7 kg i znacznie wyższa cena",
+      "286 Wh nie wystarczy na grzejnik, czajnik ani długą pracę lodówki"
+    ],
+    "metric": {
+      "label": "Energia",
+      "value": 286,
+      "unit": "Wh",
+      "note": "dane producenta"
+    }
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "fenix-e01-v2",
+    "category": "oswietlenie",
+    "tier": "budzetowy",
+    "brand": "Fenix",
+    "model": "E01 V2.0",
+    "description": "Miniaturowa metalowa latarka na jedną baterię AAA, do 100 lm.",
+    "specs": [
+      {
+        "label": "Strumień maks.",
+        "value": "100 lm"
+      },
+      {
+        "label": "Zasięg",
+        "value": "35 m"
+      },
+      {
+        "label": "Czas pracy",
+        "value": "do 25 h (najniższy tryb)"
+      },
+      {
+        "label": "Zasilanie",
+        "value": "1× AAA"
+      },
+      {
+        "label": "Waga / szczelność",
+        "value": "13 g, IP68"
+      }
+    ],
+    "pricePLN": 55.88,
+    "retailer": "morele.net",
+    "retailerUrl": "https://www.morele.net/latarka-fenix-latarka-diodowa-fenix-e01-v2-0-czarna-039-456-7528672/",
+    "manufacturerUrl": "https://www.fenixlight.com/?p=2572",
+    "useCase": "Stałe wyposażenie kluczy, apteczki lub plecaka. Działa na zwykłe baterie AAA, bez ładowania.",
+    "pros": [
+      "Bardzo mała, metalowa obudowa",
+      "Zwykła bateria AAA: łatwo zrobić zapas",
+      "Szczelność IP68"
+    ],
+    "cons": [
+      "Niska moc i krótki zasięg",
+      "Krótki czas pracy na najwyższym trybie"
+    ],
+    "metric": {
+      "label": "Jasność",
+      "value": 100,
+      "unit": "lm"
+    }
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "fenix-hm50r-v2",
+    "category": "oswietlenie",
+    "tier": "polecany",
+    "brand": "Fenix",
+    "model": "HM50R V2.0",
+    "description": "Aluminiowa latarka czołowa 700 lm z akumulatorem, światłem czerwonym i ładowaniem USB-C.",
+    "specs": [
+      {
+        "label": "Strumień maks.",
+        "value": "700 lm, światło białe i czerwone"
+      },
+      {
+        "label": "Akumulator",
+        "value": "16340 Li-ion 700 mAh, w zestawie"
+      },
+      {
+        "label": "Ładowanie",
+        "value": "USB-C, ok. 1,5 h"
+      },
+      {
+        "label": "Waga / szczelność",
+        "value": "79,7 g z akumulatorem, IP68"
+      }
+    ],
+    "pricePLN": 223.22,
+    "retailer": "morele.net",
+    "retailerUrl": "https://www.morele.net/latarka-fenix-fenix-head-lamp-hm50r-v2-0-700-lm-13334388/",
+    "manufacturerUrl": "https://www.fenixlight.com/?p=3492",
+    "useCase": "Światło przy wolnych rękach: w domu bez prądu, przy naprawach i podczas ewakuacji.",
+    "pros": [
+      "Wolne ręce i wysoka jasność",
+      "Ładowanie USB-C z powerbanku",
+      "Aluminiowa obudowa, IP68, tryb czerwony"
+    ],
+    "cons": [
+      "Mały akumulator: przy wysokich trybach trzeba często ładować",
+      "Droższa od prostych czołówek"
+    ],
+    "notes": "Producent podaje niespójny zasięg (115 m / 138 m), dlatego go pomijamy.",
+    "metric": {
+      "label": "Jasność",
+      "value": 700,
+      "unit": "lm"
+    }
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "sprawdz",
+    "lastVerified": "2026-11-13",
+    "id": "fenix-cl26r-pro",
+    "category": "oswietlenie",
+    "tier": "premium",
+    "brand": "Fenix",
+    "model": "CL26R Pro",
+    "description": "Akumulatorowa lampa kempingowa ze światłem białym i czerwonym oraz funkcją powerbanku.",
+    "specs": [
+      {
+        "label": "Strumień maks.",
+        "value": "do 650 lm"
+      },
+      {
+        "label": "Czas pracy",
+        "value": "do 408 h (najniższy tryb)"
+      },
+      {
+        "label": "Akumulator",
+        "value": "21700 Li-ion, w zestawie"
+      },
+      {
+        "label": "Ładowanie",
+        "value": "USB-C, ok. 3,5 h; wyjście USB-A"
+      },
+      {
+        "label": "Szczelność",
+        "value": "IP66"
+      }
+    ],
+    "pricePLN": 288.13,
+    "retailer": "morele.net",
+    "retailerUrl": "https://www.morele.net/fenix-latarka-diodowa-fenix-cl26r-pro-kempingowa-szara-15890177/",
+    "manufacturerUrl": "https://www.fenixlight.com/?p=4742",
+    "useCase": "Światło na cały pokój podczas długiej awarii, z możliwością doładowania telefonu.",
+    "pros": [
+      "Rozproszone światło dla całego pomieszczenia",
+      "Bardzo długi czas pracy na niskim trybie",
+      "Magnes, karabińczyk i funkcja powerbanku"
+    ],
+    "cons": [
+      "Jedno ogniwo to mały zapas energii: ładowanie telefonu skraca czas świecenia",
+      "Dane producenta o jasności są niespójne (650 / 500 lm)"
+    ],
+    "metric": {
+      "label": "Jasność",
+      "value": 650,
+      "unit": "lm",
+      "note": "maks. łącznie wg producenta"
+    }
+  },
+  {
+    "id": "forclaz-travel-500-40",
+    "category": "ewakuacja",
+    "tier": "budzetowy",
+    "brand": "Forclaz (Decathlon)",
+    "model": "Travel 500 Organizer 40 l",
+    "description": "Plecak podróżno-trekkingowy 40 l otwierany jak walizka, z wieloma zapinanymi przegródkami i komorą na laptopa.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "40 l"
+      },
+      {
+        "label": "Waga",
+        "value": "1,3 kg"
+      },
+      {
+        "label": "Wymiary",
+        "value": "55 × 32 × 27 cm"
+      },
+      {
+        "label": "Konstrukcja",
+        "value": "Piankowe szelki, pas biodrowy, stały tył"
+      }
+    ],
+    "pricePLN": 299.99,
+    "currency": "PLN",
+    "retailer": "Decathlon",
+    "retailerUrl": "https://www.decathlon.pl/p/plecak-trekkingowy-forclaz-travel-500-40-litrow-organizer/_/R-p-338564",
+    "manufacturerUrl": "https://www.decathlon.pl/p/plecak-trekkingowy-forclaz-travel-500-40-litrow-organizer/_/R-p-338564",
+    "useCase": "Uporządkowany plecak ewakuacyjny: dokumenty, ubrania i elektronika w jednym miejscu, gotowe do szybkiego wyjścia.",
+    "pros": [
+      "Otwarcie jak walizka ułatwia pakowanie i szybki dostęp",
+      "Dużo przegródek i komora na laptopa",
+      "Niska cena przy solidnym wykonaniu"
+    ],
+    "cons": [
+      "Stały tył bez regulacji: przy cięższym ładunku mniej wygodny niż plecaki trekkingowe",
+      "Konstrukcja bardziej podróżna niż terenowa"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "notes": "Forclaz to marka własna Decathlonu."
+  },
+  {
+    "id": "osprey-talon-44",
+    "category": "ewakuacja",
+    "tier": "polecany",
+    "brand": "Osprey",
+    "model": "Talon 44",
+    "description": "Lekki plecak 44 l z regulowanym systemem nośnym AirScape i dostępem do komory od góry, od dołu i z boku.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "44 l (S/M), 48 l (L/XL)"
+      },
+      {
+        "label": "Waga",
+        "value": "1,57 kg (S/M)"
+      },
+      {
+        "label": "Materiał",
+        "value": "Nylon 100D ripstop z recyklingu, dno 420D"
+      },
+      {
+        "label": "System nośny",
+        "value": "AirScape, regulowana długość pleców"
+      }
+    ],
+    "pricePLN": 664.99,
+    "currency": "PLN",
+    "retailer": "8a.pl",
+    "retailerUrl": "https://8a.pl/plecak-turystyczny-osprey-talon-44-green-canopy-pine-leaf",
+    "manufacturerUrl": "https://www.osprey.com/eu/osprey-talon-44-s25",
+    "useCase": "Plecak na 2–3 dni poza domem, wygodny także przy długim marszu z pełnym obciążeniem.",
+    "pros": [
+      "Regulowana długość systemu nośnego, dobre dopasowanie do sylwetki",
+      "Bardzo dobry stosunek wagi do pojemności",
+      "Kieszenie na pasie biodrowym i miejsce na bukłak"
+    ],
+    "cons": [
+      "Brak pokrowca przeciwdeszczowego",
+      "Lekka tkanina 100D słabiej znosi przetarcia niż Cordura"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "sprawdz",
+    "lastVerified": "2026-11-13",
+    "notes": "Dostępność zależy od rozmiaru; u producenta część rozmiarów była niedostępna."
+  },
+  {
+    "id": "tt-modular-pack-45-plus",
+    "category": "ewakuacja",
+    "tier": "premium",
+    "brand": "Tasmanian Tiger",
+    "model": "TT Modular Pack 45 Plus",
+    "description": "Modułowy plecak 45 + 5 l z Cordury 700D z całkowicie otwieranym panelem przednim i systemem MOLLE.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "45 + 5 l"
+      },
+      {
+        "label": "Waga",
+        "value": "ok. 2,55 kg"
+      },
+      {
+        "label": "Materiał",
+        "value": "CORDURA 700D, zamki YKK"
+      },
+      {
+        "label": "System nośny",
+        "value": "V2 Plus z regulacją, zdejmowany pas biodrowy"
+      }
+    ],
+    "pricePLN": 1220.99,
+    "currency": "PLN",
+    "retailer": "8a.pl",
+    "retailerUrl": "https://8a.pl/plecak-taktyczny-tasmanian-tiger-modular-pack-45-plus-coyote-brown",
+    "manufacturerUrl": "https://www.tasmaniantiger.info/en/specials/tt-modular-pack-45-plus/",
+    "useCase": "Bardzo wytrzymały plecak dla osób, które chcą układać wyposażenie w modułach: apteczka, elektronika, woda.",
+    "pros": [
+      "Wysoka odporność na rozdarcia i przetarcia",
+      "Panel przedni otwiera się w całości",
+      "W zestawie trzy dodatkowe kieszenie"
+    ],
+    "cons": [
+      "Duża masa własna, ok. 2,55 kg",
+      "Wojskowy wygląd nie każdemu odpowiada"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13"
+  },
+  {
+    "id": "lifesystems-trek",
+    "category": "dom",
+    "tier": "budzetowy",
+    "brand": "Lifesystems",
+    "model": "Trek First Aid Kit",
+    "description": "Kompaktowa apteczka w zapinanym etui na drobne urazy: skaleczenia, otarcia, oparzenia i pęcherze.",
+    "specs": [
+      {
+        "label": "Elementy",
+        "value": "31"
+      },
+      {
+        "label": "Waga",
+        "value": "240 g"
+      },
+      {
+        "label": "Wymiary",
+        "value": "140 × 110 × 50 mm"
+      },
+      {
+        "label": "Zawartość m.in.",
+        "value": "Bandaże, opatrunek 12 × 12 cm, żel na oparzenia, rękawice, nożyczki"
+      }
+    ],
+    "pricePLN": 94.99,
+    "currency": "PLN",
+    "retailer": "8a.pl",
+    "retailerUrl": "https://8a.pl/apteczka-turystyczna-lifesystems-trek-first-aid-kit-red",
+    "manufacturerUrl": "https://www.lifesystems.co.uk/products/trek",
+    "useCase": "Podstawowa apteczka do domowego zestawu awaryjnego albo plecaka ewakuacyjnego.",
+    "pros": [
+      "Mała i lekka, mieści się w każdym plecaku",
+      "Producent publikuje pełną listę zawartości"
+    ],
+    "cons": [
+      "Tylko na drobne urazy: brak opaski uciskowej i opatrunków na duże krwawienia",
+      "Nie spełnia normy DIN 13164"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13"
+  },
+  {
+    "id": "helpbag-basic",
+    "category": "dom",
+    "tier": "polecany",
+    "brand": "HELP BAG",
+    "model": "Zestaw awaryjny BASIC",
+    "description": "Gotowy zestaw awaryjny polskiego producenta: wodoodporny plecak z 31 elementami wyposażenia, sprzedawany jako jeden produkt.",
+    "specs": [
+      {
+        "label": "Elementy",
+        "value": "31"
+      },
+      {
+        "label": "Waga",
+        "value": "ok. 6,5 kg"
+      },
+      {
+        "label": "Zasilanie",
+        "value": "Powerbank 10 000 mAh, radio na dynamo"
+      },
+      {
+        "label": "Żywność i woda",
+        "value": "3 racje (2760 kcal), woda 500 ml, tabletki do dezynfekcji"
+      }
+    ],
+    "pricePLN": 1699.99,
+    "currency": "PLN",
+    "retailer": "helpbag.eu (sklep producenta)",
+    "retailerUrl": "https://helpbag.eu/shop/kits/basic/",
+    "manufacturerUrl": "https://helpbag.eu/shop/kits/basic/",
+    "useCase": "Gotowy zestaw dla jednej osoby, bez samodzielnego kompletowania sprzętu.",
+    "pros": [
+      "Kompletny zestaw od polskiego producenta",
+      "Zawiera powerbank, radio na dynamo, czołówkę i apteczkę",
+      "Wodoodporny plecak"
+    ],
+    "cons": [
+      "Tylko 500 ml wody: zapas trzeba uzupełnić",
+      "Wyraźnie drożej niż zestaw skompletowany samodzielnie"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "notes": "Producent nie podaje pojemności plecaka w litrach."
+  },
+  {
+    "id": "helpbag-max-pro",
+    "category": "dom",
+    "tier": "premium",
+    "brand": "HELP BAG",
+    "model": "Zestaw awaryjny MAX PRO 5.0",
+    "description": "Rozbudowany zestaw 72-godzinny: ponad 100 elementów w 8 modułach, plecak z tkaniny 600D i skrzynia do przechowywania w domu.",
+    "specs": [
+      {
+        "label": "Gotowość",
+        "value": "72 h"
+      },
+      {
+        "label": "Moduły",
+        "value": "8 modułów, ponad 100 elementów"
+      },
+      {
+        "label": "Plecak",
+        "value": "35–55 l, TITAN SHIELD 600D"
+      },
+      {
+        "label": "Waga pełnego plecaka",
+        "value": "ok. 9,5 kg"
+      }
+    ],
+    "pricePLN": 2999.99,
+    "currency": "PLN",
+    "retailer": "helpbag.eu (sklep producenta)",
+    "retailerUrl": "https://helpbag.eu/shop/kits/max/",
+    "manufacturerUrl": "https://helpbag.eu/shop/kits/max/",
+    "useCase": "Najpełniejsze gotowe rozwiązanie: plecak na 72 h ewakuacji i skrzynia na domowe zapasy.",
+    "pros": [
+      "Moduły tematyczne ułatwiają szybkie znalezienie rzeczy",
+      "Filtr do wody, półmaska, śpiwór awaryjny",
+      "Skrzynia awaryjna w zestawie"
+    ],
+    "cons": [
+      "Wysoka cena i duża waga pełnego plecaka",
+      "Dane techniczne różnią się między sklepami"
+    ],
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "notes": "Sportano podaje inne wymiary i wagę; przyjęto dane producenta."
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "sony-icf-506",
+    "category": "lacznosc",
+    "tier": "budzetowy",
+    "brand": "Sony",
+    "model": "ICF-506",
+    "description": "Analogowe radio AM/FM na 3 baterie AA lub z sieci 230 V, z głośnikiem 10 cm.",
+    "specs": [
+      {
+        "label": "Zakresy",
+        "value": "FM 87,5–108 MHz, AM 531–1602 kHz"
+      },
+      {
+        "label": "Zasilanie",
+        "value": "3× AA lub sieć 230 V"
+      },
+      {
+        "label": "Czas pracy",
+        "value": "ok. 35 h na bateriach"
+      },
+      {
+        "label": "Głośnik",
+        "value": "ok. 10 cm, 640 mW"
+      }
+    ],
+    "pricePLN": 229.99,
+    "retailer": "MediaMarkt",
+    "retailerUrl": "https://mediamarkt.pl/pl/product/_radio-sony-icf-506-1400446.html",
+    "manufacturerUrl": "https://www.sony.co.uk/electronics/radios/icf-506/specifications",
+    "useCase": "Podstawowy odbiornik komunikatów FM/AM w domowym zestawie awaryjnym, z zapasem baterii AA.",
+    "pros": [
+      "Zwykłe baterie AA albo zasilanie z sieci",
+      "Prosta obsługa analogowa",
+      "Głośny, czytelny dźwięk"
+    ],
+    "cons": [
+      "Brak DAB+, korbki i panelu słonecznego",
+      "Bez zapasu baterii nie zadziała podczas awarii prądu"
+    ]
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "sangean-mmr-88",
+    "category": "lacznosc",
+    "tier": "polecany",
+    "brand": "Sangean",
+    "model": "MMR-88 (USB-C)",
+    "description": "Wytrzymałe radio awaryjne AM/FM z akumulatorem ładowanym z USB-C, korbką lub panelem słonecznym, z latarką.",
+    "specs": [
+      {
+        "label": "Zakresy",
+        "value": "AM / FM"
+      },
+      {
+        "label": "Akumulator",
+        "value": "850 mAh, do 14 h odtwarzania"
+      },
+      {
+        "label": "Ładowanie",
+        "value": "USB-C, korbka, panel słoneczny"
+      },
+      {
+        "label": "Wyjście USB",
+        "value": "5 V / 0,3 A"
+      },
+      {
+        "label": "Masa",
+        "value": "377 g"
+      }
+    ],
+    "pricePLN": 459.0,
+    "retailer": "Conrad",
+    "retailerUrl": "https://www.conrad.pl/pl/p/radio-outdoorowe-sangean-mmr-88-fale-metrowe-vhf-fale-srednie-mf-funkcja-ladowania-akumulatora-latarka-kieszonkowa-3532560.html",
+    "manufacturerUrl": "https://www.sangean.eu/en/product/mmr-88-yellow",
+    "useCase": "Radio do plecaka lub szuflady awaryjnej, które naładujesz bez sieci: korbką albo słońcem.",
+    "pros": [
+      "Trzy niezależne sposoby ładowania",
+      "Latarka LED z trybem SOS",
+      "Kompaktowa, wzmocniona obudowa"
+    ],
+    "cons": [
+      "Mały akumulator i słabe wyjście USB: telefon doładuje tylko awaryjnie",
+      "Brak DAB+"
+    ],
+    "notes": "Conrad sprzedaje też wariant MMR-88 DAB+; tu chodzi o wersję AM/FM."
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "sangean-mmr-99-dab",
+    "category": "lacznosc",
+    "tier": "premium",
+    "brand": "Sangean",
+    "model": "MMR-99 DAB",
+    "description": "Radio awaryjne DAB+ i FM z akumulatorem 2600 mAh, ładowaniem z USB-C, korbki lub słońca, latarką i obudową IP55.",
+    "specs": [
+      {
+        "label": "Zakresy",
+        "value": "DAB+ i FM z RDS"
+      },
+      {
+        "label": "Akumulator",
+        "value": "2600 mAh"
+      },
+      {
+        "label": "Wyjście USB",
+        "value": "5 V / 1 A"
+      },
+      {
+        "label": "Odporność",
+        "value": "IP55"
+      },
+      {
+        "label": "Masa",
+        "value": "837 g"
+      }
+    ],
+    "pricePLN": 769.0,
+    "retailer": "Conrad",
+    "retailerUrl": "https://www.conrad.pl/pl/p/radio-outdoorowe-sangean-mmr-99-dab-black-dab-dab-fale-metrowe-vhf-panel-sloneczny-ochrona-przeciwbryzgowa-pylos-2564154.html",
+    "manufacturerUrl": "https://www.sangean.eu/en/product/mmr-99-dab-midnight-black",
+    "useCase": "Główne domowe źródło komunikatów przy dłuższej awarii prądu, z zapasem energii do doładowania telefonu.",
+    "pros": [
+      "DAB+ i FM w jednym urządzeniu",
+      "Duży akumulator i wyjście USB 1 A",
+      "IP55, latarka z trybem SOS"
+    ],
+    "cons": [
+      "Brak fal średnich (AM)",
+      "Ciężkie i drogie; ładowanie korbką jest powolne"
+    ],
+    "notes": "Odbiór zależy od działania nadajników i zasięgu w danym miejscu."
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "sprawdz",
+    "lastVerified": "2026-11-13",
+    "id": "hunersdorff-standard-12",
+    "category": "woda",
+    "tier": "budzetowy",
+    "brand": "Hünersdorff",
+    "model": "Kanister STANDARD 12 l z kranem",
+    "description": "Kanister z HDPE dopuszczonego do kontaktu z żywnością, z kranem. Służy do przechowywania wody, nie do jej uzdatniania.",
+    "specs": [
+      {
+        "label": "Pojemność",
+        "value": "12 l"
+      },
+      {
+        "label": "Materiał",
+        "value": "HDPE do kontaktu z żywnością"
+      },
+      {
+        "label": "Wymiary",
+        "value": "160 × 334 × 332 mm"
+      },
+      {
+        "label": "Masa",
+        "value": "0,49 kg"
+      }
+    ],
+    "pricePLN": 72.76,
+    "retailer": "Allegro (oferta przez Ceneo)",
+    "retailerUrl": "https://www.ceneo.pl/115293903",
+    "manufacturerUrl": "https://www.huenersdorff.de/en/products/huenersdorff/standard-12-litre-water-jerrycan-p104-1041-10411.html",
+    "useCase": "Domowy zapas wody pitnej. Przy zaleceniu min. 3 l na osobę na dobę jeden kanister to zapas na 4 osobodni.",
+    "pros": [
+      "Materiał dopuszczony do kontaktu z żywnością",
+      "Stały kran: nalewanie bez przelewania",
+      "Kanistry można ustawiać jeden na drugim"
+    ],
+    "cons": [
+      "Nie uzdatnia wody: zapas trzeba okresowo wymieniać",
+      "Brak deklarowanej ochrony UV: trzymać w ciemnym miejscu"
+    ],
+    "notes": "Cena z oferty Allegro widocznej na Ceneo, bez kosztu dostawy."
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "sawyer-squeeze-sp129",
+    "category": "woda",
+    "tier": "polecany",
+    "brand": "Sawyer",
+    "model": "Squeeze Water Filtration System",
+    "description": "Lekki filtr z membraną 0,1 µm. Usuwa bakterie i pierwotniaki, nie usuwa wirusów ani substancji chemicznych.",
+    "specs": [
+      {
+        "label": "Membrana",
+        "value": "Hollow fiber 0,1 µm"
+      },
+      {
+        "label": "Bakterie",
+        "value": "99,99999%"
+      },
+      {
+        "label": "Pierwotniaki",
+        "value": "99,9999%"
+      },
+      {
+        "label": "Zestaw",
+        "value": "2 worki, tłok do płukania, adaptery"
+      }
+    ],
+    "pricePLN": 359.99,
+    "retailer": "8a.pl",
+    "retailerUrl": "https://8a.pl/filtr-do-wody-sawyer-squeeze-water-filtration-system",
+    "manufacturerUrl": "https://www.sawyer.com/product/squeeze-water-filter-system",
+    "useCase": "Filtrowanie wody z rzeki, jeziora lub deszczówki, gdy nie ma wody w kranie, a źródło nie jest skażone chemicznie.",
+    "pros": [
+      "Bardzo lekki i mały",
+      "Płukanie wsteczne, wielokrotne użycie",
+      "Wysoka skuteczność wobec bakterii i pierwotniaków"
+    ],
+    "cons": [
+      "Nie usuwa wirusów ani chemikaliów: to filtracja, nie pełne uzdatnianie",
+      "Woda w filtrze nie może zamarznąć"
+    ]
+  },
+  {
+    "currency": "PLN",
+    "image": null,
+    "affiliate": false,
+    "availability": "dostepny",
+    "lastVerified": "2026-11-13",
+    "id": "msr-guardian-purifier",
+    "category": "woda",
+    "tier": "premium",
+    "brand": "MSR",
+    "model": "Guardian Purifier",
+    "description": "Pompowy oczyszczacz z membraną 0,02 µm zgodny z protokołem NSF P248: usuwa też wirusy, ale nie chemikalia.",
+    "specs": [
+      {
+        "label": "Usuwa",
+        "value": "Wirusy, bakterie, pierwotniaki, osady"
+      },
+      {
+        "label": "Norma",
+        "value": "NSF P248"
+      },
+      {
+        "label": "Wydajność",
+        "value": "2,5 l/min"
+      },
+      {
+        "label": "Żywotność wkładu",
+        "value": "ponad 10 000 l"
+      },
+      {
+        "label": "Masa",
+        "value": "490 g"
+      }
+    ],
+    "pricePLN": 1613.0,
+    "retailer": "Campingshop.pl",
+    "retailerUrl": "https://www.campingshop.pl/turystyczny-filtr-do-wody-guardian-msr",
+    "manufacturerUrl": "https://cascadedesigns.com/products/guardian-purifier",
+    "useCase": "Oczyszczanie dużych ilości wody z niepewnych źródeł, także przy ryzyku skażenia wirusami, dla rodziny lub grupy.",
+    "pros": [
+      "Usuwa także wirusy",
+      "Duża wydajność i długa żywotność wkładu",
+      "Samoczyszczenie przy każdym ruchu pompy"
+    ],
+    "cons": [
+      "Wysoka cena",
+      "Nie usuwa chemikaliów, toksyn ani soli"
+    ]
+  }
+]

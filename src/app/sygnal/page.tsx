@@ -7,6 +7,7 @@ import { SERIES } from "@/lib/site";
 import { ArticleRow, SectionHead, accent, epTag, thumbOf, ytUrl } from "@/components/ui";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { SygnalMotion } from "@/components/motion/SygnalMotion";
+import { BreakingNewsBar } from "@/components/BreakingNewsBar";
 
 const S = SERIES.sygnal;
 const TZ = "Europe/Warsaw";
@@ -70,6 +71,7 @@ export default async function Page({ searchParams }: PageProps<"/sygnal">) {
 
   return (
     <div style={accent(S.color)}>
+      <BreakingNewsBar />
       <SygnalMotion>
         {/* A. MASTHEAD */}
         <header className="relative overflow-hidden">

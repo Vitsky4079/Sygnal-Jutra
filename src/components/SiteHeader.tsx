@@ -1,132 +1,106 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useRef } from "react";
-import { Menu, Search, X } from "lucide-react";
-import { MEDIA_NAV, NAV, SERIES, SITE } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, Search, X } from "lucide-react";
+import { MEDIA_NAV, NAV } from "@/lib/site";
 import { Logo } from "./Logo";
 
-const today = new Intl.DateTimeFormat("pl-PL", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
-
+/**
+ * Nagłówek: przezroczysty nad filmowym hero, po przewinięciu przechodzi w ciemne tło.
+ * Główna nawigacja to trzy doświadczenia PLAN B; redakcja jest dyskretnym linkiem obok.
+ */
 export function SiteHeader() {
   const pathname = usePathname();
-  const router = useRouter();
   const drawer = useRef<HTMLDialogElement>(null);
+  const [solid, setSolid] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const close = () => drawer.current?.close();
 
-  function onSearch(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const q = String(new FormData(e.currentTarget).get("q") ?? "").trim();
-    close();
-    if (q) router.push(`/szukaj?q=${encodeURIComponent(q)}`);
-  }
-
   return (
-    <header className="sticky top-0 z-50 bg-bg/95 backdrop-blur-sm">
-      {/* Pasek redakcyjny */}
-      <div className="hidden border-b border-line md:block">
-        <div className="wrap flex h-8 items-center justify-between">
-          <p className="meta capitalize" suppressHydrationWarning>{today.format(new Date())}</p>
-          <nav aria-label="Media" className="meta flex gap-4">
-            <span className="text-muted/70">Media:</span>
-            {MEDIA_NAV.map((m) => <Link key={m.href} href={m.href} className="hover:text-text">{m.label}</Link>)}
-          </nav>
-          <ul className="meta flex gap-4">
-            {[["YouTube", SITE.social.youtube], ["TikTok", SITE.social.tiktok], ["Instagram", SITE.social.instagram]].map(([l, h]) => (
-              <li key={l}><a href={h} target="_blank" rel="noopener noreferrer" className="hover:text-text">{l}</a></li>
-            ))}
-          </ul>
+    <header
+      data-solid={solid || undefined}
+      className="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid]:border-line/70 data-[solid]:bg-bg/85 data-[solid]:backdrop-blur-md"
+    >
+      <div className="wrap flex h-16 items-center justify-between gap-6 md:h-20">
+        <div className="flex items-center gap-4">
+          <Logo height={32} />
+          <span aria-hidden className="hidden h-6 w-px bg-line sm:block" />
+          <Link href="/" className="label hidden bg-planb px-2 py-1 text-[0.66rem] text-bg-3 sm:block" aria-label="PLAN B, strona główna">PLAN B</Link>
         </div>
-      </div>
 
-      <div className="border-b border-line">
-        <div className="wrap flex h-16 items-center justify-between gap-6">
-          <Logo height={34} />
-
-          <nav aria-label="Główna" className="hidden items-center lg:flex">
-            {NAV.map((item) => {
-              const color = item.series ? SERIES[item.series].color : "var(--text)";
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  style={{ ["--accent" as string]: color }}
-                  className="label relative px-3 py-[1.4rem] xl:px-4 text-muted transition-colors hover:text-text aria-[current=page]:text-text
-                    after:absolute after:inset-x-3 xl:after:inset-x-4 after:bottom-0 after:h-[3px] after:origin-left after:scale-x-0 after:bg-accent after:transition-transform
-                    hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <form role="search" onSubmit={onSearch} className="hidden xl:block">
-              <label className="sr-only" htmlFor="q-desktop">Szukaj</label>
-              <div className="flex items-center border-b border-line focus-within:border-text">
-                <Search aria-hidden size={16} className="text-muted" />
-                <input id="q-desktop" name="q" type="search" placeholder="Szukaj" className="w-32 bg-transparent px-2 py-2 text-sm outline-none placeholder:text-muted" />
-              </div>
-            </form>
-            <Link href="/checklista" className="label hidden bg-planb px-4 py-2.5 text-bg transition-colors hover:bg-text sm:inline-block">
-              Checklista 72 h
+        <nav aria-label="Główna" className="hidden items-center gap-1 md:flex">
+          {NAV.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className="relative px-4 py-3 font-display text-[0.95rem] font-semibold text-text/80 transition-colors hover:text-text aria-[current=page]:text-text
+                after:absolute after:inset-x-4 after:bottom-1 after:h-[2px] after:origin-left after:scale-x-0 after:bg-sygnal after:transition-transform after:duration-300
+                hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
+            >
+              {item.label}
             </Link>
-            <button type="button" onClick={() => drawer.current?.showModal()} className="grid size-11 place-items-center lg:hidden" aria-label="Otwórz menu">
-              <Menu aria-hidden size={22} />
-            </button>
-          </div>
-        </div>
+          ))}
+          <span aria-hidden className="mx-3 h-6 w-px bg-line" />
+          <Link href="/sygnal" className="meta inline-flex items-center gap-1 px-2 py-3 hover:text-text">
+            Redakcja <ArrowUpRight aria-hidden size={13} />
+          </Link>
+          <Link href="/szukaj" aria-label="Szukaj" className="grid size-11 place-items-center text-text/80 hover:text-text">
+            <Search aria-hidden size={19} />
+          </Link>
+        </nav>
+
+        <button type="button" onClick={() => drawer.current?.showModal()} className="grid size-11 place-items-center md:hidden" aria-label="Otwórz menu">
+          <Menu aria-hidden size={24} />
+        </button>
       </div>
 
       <dialog
         ref={drawer}
         aria-label="Menu"
-        className="m-0 ml-auto h-dvh max-h-none w-[min(22rem,100vw)] max-w-none border-l border-line bg-bg p-0 text-text backdrop:bg-black/60"
+        className="m-0 ml-auto h-dvh max-h-none w-full max-w-none bg-bg-3 p-0 text-text backdrop:bg-black/70 sm:w-[24rem] sm:border-l sm:border-line"
         onClick={(e) => e.target === drawer.current && close()}
       >
-        <div className="flex h-full flex-col p-6">
-          <div className="flex items-center justify-between">
+        <div className="flex h-full flex-col px-6 pb-8 pt-3">
+          <div className="flex h-14 items-center justify-between">
             <span className="label text-muted">Menu</span>
             <button type="button" onClick={close} aria-label="Zamknij menu" className="grid size-11 place-items-center">
-              <X aria-hidden size={22} />
+              <X aria-hidden size={24} />
             </button>
           </div>
 
-          <form role="search" onSubmit={onSearch} className="mt-4 flex border-b border-line focus-within:border-text">
-            <label className="sr-only" htmlFor="q-mobile">Szukaj</label>
-            <input id="q-mobile" name="q" type="search" placeholder="Szukaj w serwisie" className="min-h-11 flex-1 bg-transparent text-base outline-none placeholder:text-muted" />
-            <button type="submit" aria-label="Szukaj" className="grid size-11 place-items-center"><Search aria-hidden size={18} /></button>
-          </form>
-
           <nav aria-label="Menu mobilne" className="mt-6 flex flex-col">
-            {NAV.map((item) => {
-              const color = item.series ? SERIES[item.series].color : "var(--text)";
-              return (
-                <Link key={item.href} href={item.href} onClick={close} className="flex min-h-14 items-center gap-3 border-b border-line font-display text-2xl font-bold">
-                  <span aria-hidden className="h-5 w-[3px]" style={{ background: color }} />
-                  {item.label}
-                </Link>
-              );
-            })}
+            {NAV.map((item, i) => (
+              <Link key={item.href} href={item.href} onClick={close} aria-current={isActive(item.href) ? "page" : undefined}
+                className="flex min-h-16 items-baseline gap-4 border-b border-line font-display text-4xl font-extrabold uppercase tracking-tight aria-[current=page]:text-planb">
+                <span className="meta w-6">{String(i + 1).padStart(2, "0")}</span>
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          <div className="mt-6">
-            <p className="label text-muted">Media</p>
+          <div className="mt-10">
+            <p className="label text-muted">Redakcja Sygnał Jutra</p>
             <ul className="mt-2 flex flex-wrap gap-x-5">
               {MEDIA_NAV.map((m) => (
-                <li key={m.href}><Link href={m.href} onClick={close} className="inline-flex min-h-11 items-center hover:text-text">{m.label}</Link></li>
+                <li key={m.href}><Link href={m.href} onClick={close} className="inline-flex min-h-11 items-center text-text/85 hover:text-text">{m.label}</Link></li>
               ))}
-              <li><Link href="/newsletter" onClick={close} className="inline-flex min-h-11 items-center hover:text-text">Newsletter</Link></li>
+              <li><Link href="/szukaj" onClick={close} className="inline-flex min-h-11 items-center text-text/85 hover:text-text">Szukaj</Link></li>
             </ul>
           </div>
 
-          <Link href="/checklista" onClick={close} className="label mt-auto bg-planb px-4 py-4 text-center text-bg">
-            Sprawdź checklistę 72 h
+          <Link href="/sklep" onClick={close} className="label mt-auto bg-sygnal px-4 py-4 text-center text-bg-3">
+            Odkryj sprzęt
           </Link>
         </div>
       </dialog>

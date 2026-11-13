@@ -4,7 +4,6 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { BreakingNewsBar } from "@/components/BreakingNewsBar";
 
 // Odświeżanie co 5 min: umożliwia planowaną publikację (artykuły z przyszłą datą).
 export const revalidate = 300;
@@ -43,7 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pl" suppressHydrationWarning className={`${archivo.variable} ${plex.variable} ${mono.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <noscript>
-          <style>{"[data-sm-root] [data-sm]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
+          <style>{"[data-sm-root] [data-sm],[data-cine] [data-c]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
         </noscript>
         <a
           href="#tresc"
@@ -52,8 +51,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Przejdź do treści
         </a>
         <SiteHeader />
-        <BreakingNewsBar />
-        <main id="tresc" className="flex-1">
+        <main id="tresc" className="flex-1 pt-16 md:pt-20">
           {children}
         </main>
         <SiteFooter />
