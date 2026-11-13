@@ -45,12 +45,19 @@ export const SERIES: Record<
   },
 };
 
-export const NAV = [
-  { label: "SYGNAŁ", href: "/sygnal", series: "sygnal" as SeriesKey },
-  { label: "KONTEKST", href: "/kontekst", series: "kontekst" as SeriesKey },
-  { label: "PLAN B", href: "/plan-b", series: "plan-b" as SeriesKey },
+export const NAV: { label: string; href: string; series?: SeriesKey }[] = [
+  { label: "PLAN B", href: "/plan-b", series: "plan-b" },
+  { label: "Sprzęt i sklep", href: "/sklep", series: "plan-b" },
+  { label: "Poradniki", href: "/poradniki", series: "plan-b" },
+  { label: "Checklisty", href: "/checklista", series: "plan-b" },
+  { label: "Aktualności", href: "/sygnal", series: "sygnal" },
+];
+
+/** Media: dostępne w pasku górnym, menu mobilnym i stopce. */
+export const MEDIA_NAV = [
+  { label: "SYGNAŁ", href: "/sygnal" },
+  { label: "KONTEKST", href: "/kontekst" },
   { label: "Wideo", href: "/wideo" },
-  { label: "Sklep", href: "/sklep" },
 ];
 
 export function formatDate(iso: string) {

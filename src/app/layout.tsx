@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
@@ -43,9 +42,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pl" suppressHydrationWarning className={`${archivo.variable} ${plex.variable} ${mono.variable}`}>
       <body className="flex min-h-dvh flex-col">
-        <Script id="sj-intro" strategy="beforeInteractive">
-          {"try{var d=document.documentElement;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion-ok');if(!sessionStorage.getItem('sj-intro'))d.classList.add('intro-pending')}}catch(e){}"}
-        </Script>
+        <noscript>
+          <style>{"[data-sm-root] [data-sm]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
+        </noscript>
         <a
           href="#tresc"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-text focus:px-4 focus:py-2 focus:text-bg"

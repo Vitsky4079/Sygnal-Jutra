@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getProducts } from "@/lib/content";
-import { PLANB_CATEGORIES } from "@/lib/site";
+import { GEAR } from "@/lib/preparedness";
+import { IsoVignette } from "@/components/plan-b/Iso";
 import { PageIntro, ProductCard } from "@/components/ui";
 
 export const metadata: Metadata = { title: "Sklep PLAN B", description: "Wyselekcjonowany sprzęt i poradniki PDF do przygotowań kryzysowych.", alternates: { canonical: "/sklep" } };
@@ -45,12 +46,20 @@ export default async function Page() {
 
         <section aria-labelledby="kat" className="mt-16">
           <h2 id="kat" className="label border-b border-text pb-3">Kategorie sprzętu</h2>
-          <ul className="grid sm:grid-cols-2 lg:grid-cols-3">
-            {PLANB_CATEGORIES.map((c, i) => (
-              <li key={c} className="border-b border-line py-5 pr-6">
-                <span className="meta text-accent">{String(i + 1).padStart(2, "0")}</span>
-                <p className="mt-1 font-display text-lg font-bold">{c}</p>
-                <p className="text-sm text-muted">Produkty w przygotowaniu</p>
+          <ul className="divide-y divide-line">
+            {GEAR.map((g, i) => (
+              <li key={g.id} id={g.id} className="grid scroll-mt-28 gap-6 py-8 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-10">
+                <IsoVignette kind={g.illustration} className="w-full max-w-[12rem]" />
+                <div>
+                  <span className="meta text-accent">{String(i + 1).padStart(2, "0")} · produkty w selekcji</span>
+                  <h3 className="hl mt-1 text-2xl md:text-3xl">{g.name}</h3>
+                  <p className="mt-2 max-w-2xl text-muted">{g.what}</p>
+                  <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-3">
+                    <div><dt className="meta">Dla kogo</dt><dd className="mt-1">{g.who}</dd></div>
+                    <div><dt className="meta">Kiedy się przydaje</dt><dd className="mt-1">{g.when}</dd></div>
+                    <div><dt className="meta">Ograniczenia</dt><dd className="mt-1">{g.limits}</dd></div>
+                  </dl>
+                </div>
               </li>
             ))}
           </ul>
