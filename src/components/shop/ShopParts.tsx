@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Check, Minus, Star } from "lucide-react";
+import { ArrowUpRight, Check, ImageOff, Minus, Star } from "lucide-react";
 import { CATEGORIES, TIERS, formatPLN, type CategoryId, type Product, type Tier } from "@/lib/shop";
 
 /** Pasek kategorii: przewijany poziomo na telefonie, aktywna kategoria podkreślona pomarańczem marki. */
@@ -53,6 +53,7 @@ export function TierCard({ product, tier, max }: { product?: Product; tier: Tier
   }
   return (
     <article
+      id={`model-${product.id}`}
       aria-labelledby={`p-${product.id}`}
       className={`relative flex flex-col p-6 md:p-8 ${featured ? "border border-planb/80 bg-[linear-gradient(180deg,rgba(164,211,127,.07),rgba(164,211,127,0)_40%)] shadow-[0_40px_80px_-50px_rgba(164,211,127,.35)] lg:-my-6 lg:py-12" : "border border-line bg-bg-2/40"}`}
     >
@@ -60,7 +61,13 @@ export function TierCard({ product, tier, max }: { product?: Product; tier: Tier
         <TierBadge tier={tier} />
         {featured && <span className="meta text-planb">Wybór redakcji</span>}
       </div>
-      <p className="meta mt-7">{product.brand}</p>
+      {product.image ? null : (
+        <div className="mt-6 flex aspect-[16/7] flex-col items-center justify-center gap-2 rounded-md border border-dashed border-text/20 bg-bg-3/40 px-4 text-center">
+          <ImageOff aria-hidden size={22} strokeWidth={1.5} className="text-muted" />
+          <p className="text-xs leading-snug text-muted">Brak zdjęcia tego modelu. Dodamy je po uzyskaniu zgody producenta lub sprzedawcy.</p>
+        </div>
+      )}
+      <p className="meta mt-6">{product.brand}</p>
       <h3 id={`p-${product.id}`} className="mt-1 font-display text-2xl font-extrabold leading-tight md:text-[1.65rem]">{product.model}</h3>
       <p className="mt-4 flex items-baseline gap-2">
         <span className="font-display text-3xl font-bold">{formatPLN(product.pricePLN)}</span>
@@ -83,9 +90,9 @@ export function TierCard({ product, tier, max }: { product?: Product; tier: Tier
 
       <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
         {product.specs.map((s) => (
-          <div key={s.label} className="grid grid-cols-[8.5rem_1fr] gap-3 py-2.5">
+          <div key={s.label} className="grid grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] gap-3 py-2.5 sm:grid-cols-[8.5rem_minmax(0,1fr)]">
             <dt className="text-muted">{s.label}</dt>
-            <dd className="font-medium">{s.value}</dd>
+            <dd className="font-medium [overflow-wrap:anywhere]">{s.value}</dd>
           </div>
         ))}
       </dl>

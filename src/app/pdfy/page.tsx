@@ -31,7 +31,7 @@ export default function Page() {
         </svg>
         <div aria-hidden className="grain absolute inset-0" />
 
-        <div className="wrap relative pb-16 pt-24 md:pb-24 md:pt-32">
+        <div className="wrap relative pb-14 pt-24 md:pb-20 md:pt-32">
           <div className="grid gap-10 xl:grid-cols-[minmax(0,1.6fr)_auto_minmax(0,1fr)] xl:items-center">
             <div>
               <p className="flex items-center gap-4 text-[0.95rem] font-bold uppercase tracking-[0.14em] text-planb">Cyfrowa biblioteka PLAN B <span aria-hidden className="h-0.5 w-24 bg-gradient-to-r from-planb to-transparent md:w-40" /></p>
@@ -50,19 +50,20 @@ export default function Page() {
           </div>
 
           <h2 className="sr-only">Tytuły</h2>
+          {/* subgrid: okładki, tytuły, opisy i statusy w jednych liniach niezależnie od długości tekstu */}
           <ol className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 md:mt-20 xl:grid-cols-4">
             {PDFS.map((p) => (
-              <li key={p.slug} id={p.slug} className="group flex scroll-mt-28 flex-col">
+              <li key={p.slug} id={p.slug} className="group row-span-4 grid scroll-mt-28 grid-rows-subgrid gap-y-0">
                 <div className="px-2 transition-transform duration-500 group-hover:-translate-y-1.5">
                   <PdfCover pdf={p} />
                 </div>
                 <h3 className="mt-8 text-lg font-bold leading-tight xl:text-[1.2rem]">PLAN B — {p.title}</h3>
                 <p className="mt-2 text-[0.98rem] leading-relaxed text-text/75">{p.lead}</p>
-                <div className="mt-6">
-                  <span className="inline-flex min-h-11 items-center gap-2.5 rounded-lg border-2 border-planb/90 px-5 font-semibold">
-                    <Clock3 aria-hidden size={18} className="text-planb" /> {PDF_STATUS[p.status]}
+                <p className="mt-5 self-start">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-planb/60 bg-planb/[.08] px-3.5 py-1.5 text-sm font-semibold text-planb">
+                    <Clock3 aria-hidden size={15} /> Status: {PDF_STATUS[p.status]}
                   </span>
-                </div>
+                </p>
               </li>
             ))}
           </ol>

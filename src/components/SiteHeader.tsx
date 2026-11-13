@@ -29,7 +29,7 @@ export function SiteHeader() {
   return (
     <header
       data-solid={solid || undefined}
-      className="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid]:border-line/70 data-[solid]:bg-bg/85 data-[solid]:backdrop-blur-md"
+      className="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid]:border-line/80 data-[solid]:bg-[#06101c]/[.97] data-[solid]:backdrop-blur-md"
     >
       <div className="wrap flex h-16 items-center justify-between gap-6 md:h-24">
         <div className="flex items-center gap-3 md:gap-5">

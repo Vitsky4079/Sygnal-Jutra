@@ -41,7 +41,7 @@ Kierunek: mockupy A–D dostarczone przez właściciela (strona główna, Instru
 | Plik | Gdzie użyty |
 |---|---|
 | hero-sprzet-desktop.jpg, hero-sprzet-mobile.jpg | Hero strony głównej (kadr poziomy / pionowy przez `<picture>`) |
-| instrukcje-przekroj.jpg | /instrukcje i zapowiedź na stronie głównej (przekrój polskiego bloku i domu) |
+| instrukcje-bryly.jpg | /instrukcje i zapowiedź na stronie głównej (kadr z dwiema kompletnymi bryłami: blok i dom) |
 | produkty/{kategoria}-{poziom}.jpg (18 plików) | Karty poziomów w /sklep; wariant „polecany” także w kaflach kategorii. Opisane na stronie jako wizualizacje typów sprzętu |
 | pdf-*.jpg | Okładki w /pdfy i na stronie głównej |
 

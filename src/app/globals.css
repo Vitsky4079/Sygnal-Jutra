@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Orientacja ekranu: kadr poziomy hero (desktop, tablet poziomo) */
+@custom-variant land (@media (min-aspect-ratio: 1/1));
+
 /* Sygnał Jutra design tokens. Series colours are official and must not change. */
 :root {
   /* Neutralne tony dobrane do fotografii „blue hour”; akcenty marek niżej bez zmian. */
@@ -38,7 +41,8 @@
 html {
   background: var(--bg);
   color-scheme: dark;
-  scroll-padding-top: 5rem;
+  /* wysokość przyklejonego nagłówka + odstęp, żeby kotwice nie chowały się pod nim */
+  scroll-padding-top: calc(4rem + 1.25rem);
 }
 
 body {
@@ -204,7 +208,10 @@ h1, h2, h3, h4 {
 
 /* Stan przed wejściem sekcji filmowych (GSAP zdejmuje data-cine-ready); bez JS odsłania <noscript> */
 @media (prefers-reduced-motion: no-preference) {
-  [data-cine]:not([data-cine-ready]) [data-c="img"] { opacity: 0; transform: scale(1.08); }
-  [data-cine]:not([data-cine-ready]) [data-c="line"] { transform: translateY(110%); }
+  [data-cine]:not([data-cine-ready]) [data-c="img"],
   [data-cine]:not([data-cine-ready]) [data-c="fade"] { opacity: 0; }
+}
+
+@media (min-width: 768px) {
+  html { scroll-padding-top: calc(6rem + 1.5rem); }
 }

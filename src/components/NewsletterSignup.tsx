@@ -44,16 +44,16 @@ export function NewsletterSignup() {
             required
             autoComplete="email"
             placeholder="Twój adres e-mail"
-            className="min-h-12 w-full border border-line bg-bg px-4 outline-none placeholder:text-muted focus:border-text"
+            className="min-h-12 w-full rounded-[5px] border border-text/20 bg-bg-3/60 px-4 outline-none placeholder:text-muted focus:border-planb"
           />
         </div>
         <input name="website" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
         <button
           type="submit"
           disabled={state === "loading" || state === "ok"}
-          className="label min-h-12 bg-text px-6 text-bg transition-colors hover:bg-sygnal disabled:opacity-60"
+          className="min-h-12 rounded-[5px] bg-sygnal px-6 font-bold text-bg-3 transition-colors hover:bg-[#ff8a5c] disabled:opacity-60"
         >
-          {state === "loading" ? "Zapisuję…" : "Zapisz mnie"}
+          {state === "loading" ? "Zapisuję…" : "Zapisz się"}
         </button>
       </div>
       <label className="mt-3 flex items-start gap-3 text-sm text-muted">

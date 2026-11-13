@@ -33,21 +33,21 @@ export default function Page() {
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(40%_35%_at_0%_72%,rgba(164,211,127,.22),transparent_70%),radial-gradient(35%_30%_at_100%_78%,rgba(164,211,127,.14),transparent_70%),linear-gradient(180deg,#0a1a2c_0%,#071321_70%,#06111d_100%)]" />
 
         {/* InstructionsStage: obecnie statyczna wizualizacja, w kolejnej fazie interaktywny przekrój 3D */}
-        <figure className="relative h-[54vh] min-h-[340px] md:absolute md:inset-y-0 md:right-0 md:h-[78%] md:w-[72%] md:min-h-0 lg:h-[74%] lg:w-[68%]">
+        <figure className="relative mx-auto aspect-[914/708] w-full max-w-2xl md:absolute md:right-[2%] md:top-24 md:mx-0 md:w-[50%] md:max-w-[52rem] lg:top-24 lg:w-[50%]">
           <Image
-            src="/visual/instrukcje-przekroj.jpg"
-            alt="Wizualizacja: przekrój typowego bloku mieszkalnego i domu jednorodzinnego o zmierzchu, z oświetlonymi pokojami"
+            src="/visual/instrukcje-bryly.jpg"
+            alt="Wizualizacja: przekrój typowego polskiego bloku mieszkalnego i domu jednorodzinnego o zmierzchu, z oświetlonymi pokojami"
             fill
             priority
-            sizes="(min-width: 768px) 70vw, 100vw"
-            className="object-cover object-[78%_50%] [mask-image:linear-gradient(180deg,#000_70%,transparent_100%)] md:[mask-image:linear-gradient(90deg,transparent_0%,#000_28%,#000_100%),linear-gradient(180deg,#000_70%,transparent_100%)] md:[mask-composite:intersect]"
+            sizes="(min-width: 768px) 54vw, 100vw"
+            className="object-cover [mask-image:linear-gradient(180deg,transparent_0%,#000_14%,#000_78%,transparent_100%)] md:[mask-image:linear-gradient(90deg,transparent_0%,#000_20%,#000_90%,transparent_100%),linear-gradient(180deg,transparent_0%,#000_16%,#000_80%,transparent_100%)] md:[mask-composite:intersect]"
           />
         </figure>
 
         <div className="wrap relative pb-14 md:pb-16 md:pt-36 lg:pt-40">
-          <div className="max-w-2xl max-md:-mt-16">
+          <div className="max-w-2xl max-md:-mt-6 md:max-w-[44%]">
             <p className="flex items-center gap-4 text-[0.95rem] font-bold uppercase tracking-[0.16em] text-planb">Instrukcje PLAN B <span aria-hidden className="h-0.5 w-12 bg-text/60" /></p>
-            <h1 id="ins-h" className="display mt-4 text-[clamp(2.4rem,4.4vw,4.9rem)] lg:whitespace-nowrap">Twoje miejsce.<br />Twój plan<span className="text-sygnal">.</span></h1>
+            <h1 id="ins-h" className="display mt-4 text-[clamp(2.4rem,4.4vw,4.9rem)] xl:whitespace-nowrap">Twoje miejsce.<br />Twój plan<span className="text-sygnal">.</span></h1>
             <p className="mt-7 inline-flex items-center gap-3 rounded-lg border-2 border-planb/90 bg-bg-3/50 px-4 py-3 text-[1.02rem] backdrop-blur-sm md:text-[1.1rem]">
               <Hourglass aria-hidden size={22} className="shrink-0 text-planb" />
               <span>Interaktywne centrum instrukcji <strong className="font-bold text-planb">w przygotowaniu.</strong></span>
@@ -57,7 +57,7 @@ export default function Page() {
             </p>
           </div>
 
-          <ul className="mt-12 grid gap-8 md:mt-[min(18vh,10rem)] md:max-w-4xl md:grid-cols-2 md:gap-0 md:pl-[8%]">
+          <ul className="mt-12 grid gap-8 md:mt-24 lg:mt-28 md:max-w-4xl md:grid-cols-2 md:gap-0 md:pl-[8%]">
             {HOMES.map(({ icon: Icon, t, d }, i) => (
               <li key={t} className={`flex gap-5 md:px-10 ${i ? "md:border-l md:border-text/20" : ""}`}>
                 <Icon aria-hidden size={56} strokeWidth={1.4} className="shrink-0 text-planb" />
@@ -92,7 +92,7 @@ export default function Page() {
       <section aria-labelledby="start" className="wrap grid gap-10 py-16 md:grid-cols-2 md:items-center md:py-20">
         <div>
           <h2 id="start" className="display text-3xl md:text-4xl">Powiadomimy Cię o starcie<span className="text-sygnal">.</span></h2>
-          <p className="mt-4 max-w-md text-muted">Jeden e-mail, gdy centrum instrukcji będzie gotowe. W międzyczasie sprawdź <Link href="/checklista" className="text-text underline underline-offset-4">checklistę 72 h</Link>.</p>
+          <p className="mt-4 max-w-md text-muted">Zapisz się do newslettera Sygnał Jutra. Start centrum instrukcji ogłosimy właśnie tam. W międzyczasie sprawdź <Link href="/checklista" className="text-text underline underline-offset-4">checklistę 72 h</Link>.</p>
         </div>
         <NewsletterSignup />
       </section>

@@ -57,7 +57,7 @@ export default function Home() {
       <Reveal as="section" aria-labelledby="h-ins" className="relative overflow-hidden border-y border-line bg-[linear-gradient(180deg,#0a1a2c,#071321)]">
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(35%_45%_at_0%_100%,rgba(164,211,127,.18),transparent_70%)]" />
         <div className="relative h-72 md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-[62%]">
-          <Image src="/visual/instrukcje-przekroj.jpg" alt="Wizualizacja: przekrój bloku i domu jednorodzinnego o zmierzchu" fill sizes="(min-width: 768px) 62vw, 100vw" className="object-cover object-[75%_50%] [mask-image:linear-gradient(180deg,#000_65%,transparent)] md:[mask-image:linear-gradient(90deg,transparent,#000_30%)]" />
+          <Image src="/visual/instrukcje-bryly.jpg" alt="Wizualizacja: przekrój bloku i domu jednorodzinnego o zmierzchu" fill sizes="(min-width: 768px) 62vw, 100vw" className="object-cover object-[60%_55%] [mask-image:linear-gradient(180deg,#000_65%,transparent)] md:[mask-image:linear-gradient(90deg,transparent,#000_30%)]" />
         </div>
         <div className="wrap relative py-14 md:py-28">
           <div className="max-w-lg">
@@ -76,7 +76,7 @@ export default function Home() {
       </Reveal>
 
       {/* PDF-Y: okładki publikacji */}
-      <Reveal as="section" aria-labelledby="h-pdf" className="relative overflow-hidden py-20 md:py-28">
+      <Reveal as="section" aria-labelledby="h-pdf" className="relative overflow-hidden pb-6 pt-20 md:pb-10 md:pt-28">
         <div aria-hidden className="absolute inset-0 bg-[radial-gradient(40%_50%_at_0%_40%,rgba(164,211,127,.12),transparent_70%)]" />
         <div className="wrap relative grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,2fr)] lg:items-center">
           <div>

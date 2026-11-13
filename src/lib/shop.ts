@@ -47,6 +47,8 @@ export type Category = {
   /** Krótki opis w panelu kategorii i podpis kafla */
   panel: string;
   tileLine: string;
+  /** Który obraz poziomu pokazać w kaflu kategorii (domyślnie polecany) */
+  tileTier?: Tier;
   /** Typ sprzętu na każdym poziomie: nazwa ogólna + wizualizacja (nie zdjęcie konkretnego modelu) */
   tiers: Record<Tier, { title: string; blurb: string }>;
   /** Rozróżnienia, które trzeba znać przed zakupem */
@@ -186,6 +188,7 @@ export const CATEGORIES: Category[] = [
     lead: "Apteczka i gotowe zestawy awaryjne sprzedawane jako jeden produkt, dla tych, którzy nie chcą kompletować wszystkiego sami.",
     panel: "Apteczki i gotowe zestawy awaryjne sprzedawane jako jeden produkt.",
     tileLine: "Apteczki, zestawy, niezbędne wyposażenie",
+    tileTier: "budzetowy",
     tiers: {
       budzetowy: { title: "Apteczka podręczna", blurb: "Opatrunki na drobne urazy w domu i w plecaku." },
       polecany: { title: "Gotowy zestaw awaryjny", blurb: "Plecak z wyposażeniem na pierwsze godziny poza domem." },

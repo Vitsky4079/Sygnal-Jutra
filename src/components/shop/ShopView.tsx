@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Backpack, Compass, Crown, Droplet, Flashlight, House, Info, Layers, Radio, ShieldCheck, Star, Zap, type LucideIcon } from "lucide-react";
-import { CATEGORIES, TIER_ORDER, TIERS, formatPLN, getCategory, productsFor, tierImage, type CategoryId, type Tier } from "@/lib/shop";
+import { ArrowDown, ArrowRight, Backpack, Compass, Crown, Droplet, Flashlight, House, Info, Layers, Radio, ShieldCheck, Star, Zap, type LucideIcon } from "lucide-react";
+import { CATEGORIES, TIER_ORDER, TIERS, getCategory, productsFor, tierImage, type CategoryId, type Tier } from "@/lib/shop";
 import { Disclosure, TierCard } from "./ShopParts";
 
 export const CAT_ICON: Record<CategoryId, LucideIcon> = {
@@ -104,14 +104,14 @@ export function ShopView({ active }: { active: CategoryId }) {
                       <Image src={tierImage(active, t)} alt={`Wizualizacja: ${c.tiers[t].title.toLowerCase()}`} fill sizes="(min-width: 1024px) 24vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                       <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0b1727] to-transparent" />
                       <div className="absolute left-4 top-4"><Badge tier={t} /></div>
+                      <span className="absolute bottom-2.5 right-3 rounded bg-bg-3/75 px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-text/80 backdrop-blur-sm">Wizualizacja</span>
                     </div>
                     <div className="flex flex-1 flex-col px-5 pb-5 pt-3">
                       <h3 className="text-[1.15rem] font-bold">{c.tiers[t].title}</h3>
                       <p className="mt-1.5 text-[0.92rem] leading-snug text-text/75">{c.tiers[t].blurb}</p>
                       {p && (
-                        <a href={`#p-${p.id}`} className="mt-auto flex items-baseline justify-between gap-3 border-t border-text/10 pt-3 text-[0.82rem] text-muted hover:text-text">
-                          <span className="truncate">Przykład: {p.brand.replace(/ \(.+\)$/, "")} {p.model}</span>
-                          <span className="shrink-0 font-bold text-text">{formatPLN(p.pricePLN)}</span>
+                        <a href={`#model-${p.id}`} className="mt-auto flex items-center justify-between gap-3 border-t border-text/10 pt-3 text-[0.85rem] font-semibold text-text/80 hover:text-text">
+                          Wybrany model i cena <ArrowDown aria-hidden size={16} className="shrink-0 text-sygnal" />
                         </a>
                       )}
                     </div>
@@ -119,11 +119,14 @@ export function ShopView({ active }: { active: CategoryId }) {
                 );
               })}
             </div>
-            <Link href={`/sklep/${next.id}`} scroll={false} aria-label={`Następna kategoria: ${next.name}`} className="absolute -right-4 top-1/2 hidden size-12 -translate-y-1/2 place-items-center rounded-full bg-sygnal text-bg-3 shadow-[0_8px_24px_-6px_rgba(255,113,61,.6)] transition-transform hover:scale-105 lg:grid">
-              <ArrowRight aria-hidden size={22} strokeWidth={2.4} />
+          </div>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
+            <p className="max-w-xl text-xs leading-relaxed text-muted">Obrazy w kartach to wizualizacje typów sprzętu. Konkretne modele, ich ceny i ograniczenia opisujemy niżej, w części „Wybrane modele”.</p>
+            <Link href={`/sklep/${next.id}`} scroll={false} className="group inline-flex min-h-11 items-center gap-3 text-sm font-semibold text-text/85 hover:text-text">
+              Następna kategoria: {next.name}
+              <span className="grid size-11 place-items-center rounded-full bg-sygnal text-bg-3 shadow-[0_8px_24px_-6px_rgba(255,113,61,.6)] transition-transform group-hover:translate-x-0.5"><ArrowRight aria-hidden size={20} strokeWidth={2.4} /></span>
             </Link>
           </div>
-          <p className="mt-3 text-xs text-muted">Zdjęcia to wizualizacje typów sprzętu, nie zdjęcia konkretnych modeli. Przykładowe produkty i ceny opisujemy niżej.</p>
 
           {/* kafle pozostałych kategorii */}
           <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
@@ -137,13 +140,13 @@ export function ShopView({ active }: { active: CategoryId }) {
         <div className="flex flex-wrap items-end justify-between gap-6 border-t border-line pt-12">
           <div>
             <p className="text-[0.85rem] font-bold uppercase tracking-[0.14em] text-planb">{c.name}</p>
-            <h2 id="szczegoly" className="display mt-2 text-3xl md:text-4xl">Przykładowe produkty</h2>
+            <h2 id="szczegoly" className="display mt-2 text-3xl md:text-4xl">Wybrane modele</h2>
           </div>
           <p className="max-w-md text-sm text-muted">Konkretne modele, które sprawdziliśmy u producenta i polskiego sprzedawcy. Przy każdym podajemy też ograniczenia.</p>
         </div>
         <div className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-3 lg:items-start lg:gap-0">
           {TIER_ORDER.map((t) => (
-            <div key={t} className={t === "polecany" ? "max-lg:order-first lg:z-10" : t === "budzetowy" ? "lg:-mr-px" : "lg:-ml-px"}>
+            <div key={t} className={`min-w-0 ${t === "polecany" ? "max-lg:order-first lg:z-10" : t === "budzetowy" ? "lg:-mr-px" : "lg:-ml-px"}`}>
               <TierCard tier={t} product={byTier[t]} max={max} />
             </div>
           ))}
@@ -175,7 +178,7 @@ export function CategoryTile({ id }: { id: CategoryId }) {
   return (
     <Link href={id === "zasilanie" ? "/sklep" : `/sklep/${id}`} scroll={false} className="group block overflow-hidden rounded-lg border border-text/12 bg-[#0b1727] transition-colors hover:border-text/35">
       <div className="relative aspect-[16/9] overflow-hidden">
-        <Image src={tierImage(id, "polecany")} alt="" fill sizes="(min-width: 1024px) 19vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
+        <Image src={tierImage(id, x.tileTier ?? "polecany")} alt="" fill sizes="(min-width: 1024px) 24vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.05]" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0b1727] to-transparent" />
       </div>
       <div className="flex items-center gap-3 px-4 pb-4 pt-1">
