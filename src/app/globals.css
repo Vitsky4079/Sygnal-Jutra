@@ -145,3 +145,16 @@ h1, h2, h3, h4 {
 .cover-link { position: relative; }
 .cover-link::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .group:hover .cover-link::after, .group:focus-visible .cover-link::after { transform: scaleX(1); }
+
+/* /sygnal: stan przed animacją wejścia (tylko z JS i bez reduced-motion) */
+.motion-ok [data-sm-root]:not([data-sm-ready]) [data-sm="meta"],
+.motion-ok [data-sm-root]:not([data-sm-ready]) [data-sm="item"] { opacity: 0; }
+.motion-ok [data-sm-root]:not([data-sm-ready]) [data-sm="mast"] { transform: translateY(105%); }
+.motion-ok [data-sm-root]:not([data-sm-ready]) [data-sm="line"] { transform: scaleX(0); }
+.motion-ok [data-sm-root]:not([data-sm-ready]) [data-sm="media"] { clip-path: inset(100% 0 0 0); }
+
+@keyframes sj-ping {
+  0% { transform: scale(0.2); opacity: 0.9; }
+  70%, 100% { transform: scale(1); opacity: 0; }
+}
+.sj-ping { transform-origin: center; transform-box: fill-box; animation: sj-ping 3.2s cubic-bezier(0.2, 0.7, 0.2, 1) infinite; }

@@ -44,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pl" suppressHydrationWarning className={`${archivo.variable} ${plex.variable} ${mono.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <Script id="sj-intro" strategy="beforeInteractive">
-          {"try{if(!sessionStorage.getItem('sj-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('intro-pending')}catch(e){}"}
+          {"try{var d=document.documentElement;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion-ok');if(!sessionStorage.getItem('sj-intro'))d.classList.add('intro-pending')}}catch(e){}"}
         </Script>
         <a
           href="#tresc"
