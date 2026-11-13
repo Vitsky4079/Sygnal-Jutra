@@ -35,17 +35,15 @@ W fazie 1 nie użyto zdjęć z tych serwisów.
 ## Obrazy w `public/visual/`
 
 Wszystkie wygenerowane 2026-11-13 w Meshy (model nano-banana-pro) na koncie właściciela projektu, z promptów
-wykluczających tekst, logotypy i nazwy marek. Przedstawiają nieoznakowany, ogólny sprzęt i nie są zdjęciami produktów ze sklepu.
+wykluczających tekst, logotypy i nazwy marek. Przedstawiają nieoznakowany, ogólny sprzęt, nigdy konkretne modele ze sklepu.
+Kierunek: mockupy A–D dostarczone przez właściciela (strona główna, Instrukcje, Sklep, PDF-y).
 
-| Plik | Gdzie użyty | Status |
-|---|---|---|
-| hero-desktop.jpg, hero-mobile.jpg | Hero strony głównej (kadr poziomy / pionowy przez `<picture>`) | zaakceptowany kierunek do przeglądu |
-| cat-zasilanie.jpg | /sklep/zasilanie (kadr w nagłówku) | do przeglądu |
-| cat-oswietlenie.jpg, cat-woda.jpg, cat-ewakuacja.jpg | pozostałe kategorie | do oceny |
-| cat-lacznosc.jpg | łączność | do wymiany: potrzebne zbliżenie studyjne |
-| cat-dom.jpg | domowa gotowość | do wymiany: półki w zwykłym polskim mieszkaniu |
-| instrukcje.jpg | /instrukcje | do wymiany: rozpoznawalny polski blok, przekrój |
-| pdf-*.jpg | okładki /pdfy | do oceny |
+| Plik | Gdzie użyty |
+|---|---|
+| hero-sprzet-desktop.jpg, hero-sprzet-mobile.jpg | Hero strony głównej (kadr poziomy / pionowy przez `<picture>`) |
+| instrukcje-przekroj.jpg | /instrukcje i zapowiedź na stronie głównej (przekrój polskiego bloku i domu) |
+| produkty/{kategoria}-{poziom}.jpg (18 plików) | Karty poziomów w /sklep; wariant „polecany” także w kaflach kategorii. Opisane na stronie jako wizualizacje typów sprzętu |
+| pdf-*.jpg | Okładki w /pdfy i na stronie głównej |
 
 ## Produkty
 

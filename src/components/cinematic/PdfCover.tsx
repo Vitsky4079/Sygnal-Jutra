@@ -1,29 +1,48 @@
 import Image from "next/image";
+import { Backpack, BatteryMedium, BriefcaseMedical, ClipboardCheck, Droplet, House, Lightbulb, Milk, Package, Radio, Users, Zap, type LucideIcon } from "lucide-react";
 import type { Pdf } from "@/lib/pdfs";
 
-/**
- * Okładka publikacji PLAN B: fotografia z rodziny „blue hour”, typografia redakcyjna,
- * grzbiet i delikatne światło krawędzi zamiast generycznego mockupu e-booka.
- */
-export function PdfCover({ pdf, sizes = "(min-width: 1024px) 22vw, 70vw", className = "" }: { pdf: Pdf; sizes?: string; className?: string }) {
-  return (
-    <div className={`relative aspect-[3/4] overflow-hidden bg-bg-3 shadow-[0_30px_60px_-30px_rgba(0,0,0,.9)] ${className}`}>
-      <Image src={pdf.image} alt="" fill sizes={sizes} className="object-cover object-bottom" />
-      <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-bg-3/85 via-bg-3/25 to-transparent" />
-      {/* grzbiet */}
-      <div aria-hidden className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/60 via-white/[.06] to-transparent" />
-      <div aria-hidden className="absolute right-0 top-0 h-[42%] w-[3px] bg-planb" />
+const ICONS: Record<string, LucideIcon[]> = {
+  "72-godziny-bez-pradu": [Zap, Lightbulb, BatteryMedium],
+  "plecak-ewakuacyjny": [Backpack, BriefcaseMedical, Milk],
+  "domowa-gotowosc-7-dni": [House, Package, Droplet],
+  "plan-awaryjny-dla-rodziny": [Users, ClipboardCheck, Radio],
+};
 
-      <div className="relative flex h-full flex-col p-[9%] pl-[11%]">
-        <div className="flex items-center justify-between">
-          <span className="font-display text-[0.6rem] font-bold uppercase tracking-[0.16em] text-text/80">Sygnał Jutra</span>
-          <span className="bg-planb px-1.5 py-0.5 font-display text-[0.55rem] font-extrabold uppercase tracking-[0.1em] text-bg-3">Plan B</span>
+/**
+ * Okładka publikacji PLAN B (Reference D): książka z grzbietem, zielony skos w rogu,
+ * „PLAN B —” w zieleni, tytuł w wersalikach, pomarańczowa kreska, zdjęcie w dolnej części i rząd ikon.
+ */
+export function PdfCover({ pdf, sizes = "(min-width: 1024px) 22vw, 80vw", className = "" }: { pdf: Pdf; sizes?: string; className?: string }) {
+  const icons = ICONS[pdf.slug] ?? [];
+  return (
+    <div className={`relative ${className}`}>
+      {/* grzbiet i krawędź kartek */}
+      <div aria-hidden className="absolute -left-2 bottom-1 top-1 w-3 rounded-l-sm bg-[linear-gradient(90deg,#03080f,#16263a_60%,#0b1626)]" />
+      <div className="relative aspect-[5/6.6] overflow-hidden rounded-r-[6px] rounded-l-[2px] bg-[#081423] shadow-[18px_30px_50px_-20px_rgba(0,0,0,.95),0_0_0_1px_rgba(255,255,255,.05)]">
+        <Image src={pdf.image} alt="" fill sizes={sizes} className="object-cover object-bottom" />
+        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,#081423_0%,#081423_30%,rgba(8,20,35,.75)_48%,rgba(8,20,35,0)_70%,rgba(8,20,35,.55)_100%)]" />
+        {/* zielony skos */}
+        <div aria-hidden className="absolute right-[9%] top-0 h-[34%] w-[7%] origin-top skew-x-[-24deg] bg-[linear-gradient(180deg,#a4d37f,rgba(164,211,127,0))] opacity-90" />
+        <div aria-hidden className="absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/50 to-transparent" />
+
+        <div className="relative flex h-full flex-col px-[9%] pb-[7%] pt-[8%]">
+          <div className="flex items-center gap-1.5 text-[clamp(0.5rem,0.7vw,0.66rem)] font-bold uppercase tracking-wide text-text/90">
+            <Image src="/brand/mark.png" alt="" width={14} height={14} className="size-[1.4em]" />
+            Sygnał Jutra
+            <span aria-hidden className="mx-1 h-[1.1em] w-px bg-text/40" />
+            <span className="-skew-x-12 rounded-[2px] bg-planb px-1 text-[0.85em] font-extrabold text-bg-3"><span className="inline-block skew-x-12">Plan B</span></span>
+            <span aria-hidden className="italic text-planb">/</span>
+          </div>
+          <p className="mt-[16%] text-[clamp(1.05rem,1.9vw,1.75rem)] font-extrabold uppercase leading-[1.04] tracking-tight">
+            <span className="block text-planb">Plan B —</span>
+            {pdf.cover.filter(Boolean).map((l) => <span key={l} className="block">{l}</span>)}
+          </p>
+          <span aria-hidden className="mt-[7%] h-[3px] w-[16%] bg-sygnal" />
+          <div aria-hidden className="mt-auto flex justify-center gap-[12%] text-text/90">
+            {icons.map((Icon, i) => <Icon key={i} className="size-[clamp(1rem,1.7vw,1.6rem)]" strokeWidth={1.4} />)}
+          </div>
         </div>
-        <p className="mt-[14%] font-mono text-[0.6rem] uppercase tracking-[0.12em] text-planb">Nr {pdf.no}</p>
-        <p className="display mt-2 text-[clamp(1.25rem,2.1vw,1.85rem)] leading-[0.98]">
-          {pdf.cover.filter(Boolean).map((l) => <span key={l} className="block">{l}</span>)}
-        </p>
-        <span aria-hidden className="mt-4 h-[3px] w-8 bg-sygnal" />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -8,16 +8,11 @@ import { SiteFooter } from "@/components/SiteFooter";
 // Odświeżanie co 5 min: umożliwia planowaną publikację (artykuły z przyszłą datą).
 export const revalidate = 300;
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+// Jeden krój dla nagłówków i tekstu: geometryczny, mocny w wersalikach (jak w mockupach PLAN B)
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600", "700", "800"],
-  display: "swap",
-});
-const plex = IBM_Plex_Sans({
-  variable: "--font-plex",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -39,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pl" suppressHydrationWarning className={`${archivo.variable} ${plex.variable} ${mono.variable}`}>
+    <html lang="pl" suppressHydrationWarning className={`${jakarta.variable} ${mono.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <noscript>
           <style>{"[data-sm-root] [data-sm],[data-cine] [data-c]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style>
@@ -51,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Przejdź do treści
         </a>
         <SiteHeader />
-        <main id="tresc" className="flex-1 pt-16 md:pt-20">
+        <main id="tresc" className="flex-1 pt-16 md:pt-24">
           {children}
         </main>
         <SiteFooter />

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Menu, Search, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { MEDIA_NAV, NAV } from "@/lib/site";
 import { Logo } from "./Logo";
 
@@ -31,32 +31,29 @@ export function SiteHeader() {
       data-solid={solid || undefined}
       className="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-[background-color,border-color,backdrop-filter] duration-300 data-[solid]:border-line/70 data-[solid]:bg-bg/85 data-[solid]:backdrop-blur-md"
     >
-      <div className="wrap flex h-16 items-center justify-between gap-6 md:h-20">
-        <div className="flex items-center gap-4">
-          <Logo height={32} />
-          <span aria-hidden className="hidden h-6 w-px bg-line sm:block" />
-          <Link href="/" className="label hidden bg-planb px-2 py-1 text-[0.66rem] text-bg-3 sm:block" aria-label="PLAN B, strona główna">PLAN B</Link>
+      <div className="wrap flex h-16 items-center justify-between gap-6 md:h-24">
+        <div className="flex items-center gap-3 md:gap-5">
+          <Logo height={44} imgClassName="h-[30px] w-auto md:h-[44px]" />
+          <span aria-hidden className="h-7 w-px bg-text/25 md:h-9" />
+          <PlanBTag className="inline-flex" />
         </div>
 
-        <nav aria-label="Główna" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Główna" className="hidden items-center md:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
-              className="relative px-4 py-3 font-display text-[0.95rem] font-semibold text-text/80 transition-colors hover:text-text aria-[current=page]:text-text
-                after:absolute after:inset-x-4 after:bottom-1 after:h-[2px] after:origin-left after:scale-x-0 after:bg-sygnal after:transition-transform after:duration-300
-                hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
+              className="relative px-5 py-4 text-[1.05rem] font-semibold text-text/85 transition-colors hover:text-text aria-[current=page]:font-bold aria-[current=page]:text-text lg:px-7
+                after:absolute after:inset-x-5 after:-bottom-1 after:h-[3px] after:rounded-full after:bg-sygnal after:opacity-0 after:transition-opacity lg:after:inset-x-7
+                hover:after:opacity-50 aria-[current=page]:after:opacity-100"
             >
               {item.label}
             </Link>
           ))}
-          <span aria-hidden className="mx-3 h-6 w-px bg-line" />
-          <Link href="/sygnal" className="meta inline-flex items-center gap-1 px-2 py-3 hover:text-text">
-            Redakcja <ArrowUpRight aria-hidden size={13} />
-          </Link>
-          <Link href="/szukaj" aria-label="Szukaj" className="grid size-11 place-items-center text-text/80 hover:text-text">
-            <Search aria-hidden size={19} />
+          <span aria-hidden className="mx-4 h-9 w-px bg-text/25" />
+          <Link href="/szukaj" aria-label="Szukaj" className="grid size-11 place-items-center text-text/90 hover:text-text">
+            <Search aria-hidden size={24} strokeWidth={1.8} />
           </Link>
         </nav>
 
@@ -105,5 +102,17 @@ export function SiteHeader() {
         </div>
       </dialog>
     </header>
+  );
+}
+
+/** Znacznik PLAN B obok logo: zielona, ścięta etykieta i dwa ukośniki, jak w identyfikacji z mockupów. */
+export function PlanBTag({ className = "" }: { className?: string }) {
+  return (
+    <Link href="/" aria-label="PLAN B, strona główna" className={`items-center gap-1.5 ${className}`}>
+      <span className="-skew-x-12 rounded-[3px] bg-planb px-2 py-1 text-[0.78rem] font-extrabold md:px-2.5 md:text-[0.95rem] leading-none tracking-tight text-bg-3">
+        <span className="inline-block skew-x-12">PLAN B</span>
+      </span>
+      <span aria-hidden className="text-lg font-extrabold italic leading-none tracking-[-0.15em] text-planb">{"//"}</span>
+    </Link>
   );
 }

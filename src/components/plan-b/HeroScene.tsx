@@ -105,7 +105,7 @@ export function HeroScene() {
                   <g className="opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
                     <line x1="0" y1="-6" x2="0" y2="-22" stroke="#a4d37f" strokeWidth="1" />
                     <rect x={-w / 2} y="-46" width={w} height="24" fill="#080f1d" stroke="#a4d37f" strokeWidth="1" />
-                    <text x="0" y="-30" textAnchor="middle" fill="#f6f7fa" fontSize="11.5" fontWeight="600" style={{ fontFamily: "var(--font-archivo)", letterSpacing: "0.02em" }}>
+                    <text x="0" y="-30" textAnchor="middle" fill="#f6f7fa" fontSize="11.5" fontWeight="600" style={{ fontFamily: "var(--font-jakarta)", letterSpacing: "0.02em" }}>
                       {s.label} →
                     </text>
                   </g>

@@ -44,6 +44,11 @@ export type Category = {
   /** object-position kadru (klasa Tailwind), by produkt był czytelny także w kadrze 4:3 na telefonie */
   focus?: string;
   lead: string;
+  /** Krótki opis w panelu kategorii i podpis kafla */
+  panel: string;
+  tileLine: string;
+  /** Typ sprzętu na każdym poziomie: nazwa ogólna + wizualizacja (nie zdjęcie konkretnego modelu) */
+  tiers: Record<Tier, { title: string; blurb: string }>;
   /** Rozróżnienia, które trzeba znać przed zakupem */
   explainer: { title: string; points: string[] };
 };
@@ -60,10 +65,17 @@ export const CATEGORIES: Category[] = [
     id: "zasilanie",
     name: "Zasilanie awaryjne",
     short: "Powerbanki i stacje zasilania",
-    image: "/visual/cat-zasilanie.jpg",
+    image: "/visual/produkty/zasilanie-polecany.jpg",
     imageAlt: "Stacja zasilania i powerbank na skale o zmierzchu",
     focus: "object-[68%_55%]",
     lead: "Prąd do telefonu, radia i światła, gdy sieć przestaje działać. Od kieszonkowego powerbanku po stację, która uruchomi lodówkę.",
+    panel: "Zasilanie i ładowanie niezbędnych urządzeń w przypadku przerwy w dostawie prądu.",
+    tileLine: "Powerbanki i stacje zasilania",
+    tiers: {
+      budzetowy: { title: "Powerbank 10 000 mAh", blurb: "Podstawowe źródło energii do telefonu, latarki czy radia." },
+      polecany: { title: "Powerbank 20 000 mAh", blurb: "Większa pojemność, szybsze ładowanie i laptop przez USB-C." },
+      premium: { title: "Stacja zasilania", blurb: "Gniazda 230 V i zapas energii dla wielu urządzeń w domu i w terenie." },
+    },
     explainer: {
       title: "Powerbank to nie stacja zasilania",
       points: [
@@ -77,9 +89,16 @@ export const CATEGORIES: Category[] = [
     id: "oswietlenie",
     name: "Oświetlenie",
     short: "Latarki, czołówki, lampy",
-    image: "/visual/cat-oswietlenie.jpg",
+    image: "/visual/produkty/oswietlenie-polecany.jpg",
     imageAlt: "Latarka oświetlająca ciemną skałę obok latarki czołowej",
     lead: "Bezpieczne światło zamiast świec. Czołówka zostawia wolne ręce, lampa oświetla cały pokój.",
+    panel: "Bezpieczne światło w domu i poza nim, gdy zgaśnie prąd.",
+    tileLine: "Latarki, czołówki, lampy awaryjne",
+    tiers: {
+      budzetowy: { title: "Kompaktowa latarka", blurb: "Mała latarka na zwykłą baterię AAA, zawsze pod ręką." },
+      polecany: { title: "Latarka czołowa", blurb: "Jasne światło i wolne ręce, ładowanie przez USB-C." },
+      premium: { title: "Lampa kempingowa", blurb: "Rozproszone światło na cały pokój przez wiele nocy." },
+    },
     explainer: {
       title: "Światło punktowe i światło do pomieszczenia",
       points: [
@@ -93,9 +112,16 @@ export const CATEGORIES: Category[] = [
     id: "lacznosc",
     name: "Łączność",
     short: "Radia i odbiór informacji",
-    image: "/visual/cat-lacznosc.jpg",
+    image: "/visual/produkty/lacznosc-polecany.jpg",
     imageAlt: "Radio awaryjne z korbką i panelem słonecznym o zmierzchu",
     lead: "Gdy nie ma internetu ani zasięgu, radio na baterie bywa jedynym źródłem komunikatów.",
+    panel: "Odbiór komunikatów, gdy nie działa internet ani sieć komórkowa.",
+    tileLine: "Radia, komunikacja, informacje",
+    tiers: {
+      budzetowy: { title: "Radio AM/FM na baterie", blurb: "Prosty odbiornik komunikatów zasilany bateriami AA." },
+      polecany: { title: "Radio awaryjne z korbką", blurb: "Ładowanie z USB-C, korbki i słońca, latarka w zestawie." },
+      premium: { title: "Radio DAB+ z korbką", blurb: "Odbiór cyfrowy i FM, duży akumulator, obudowa IP55." },
+    },
     explainer: {
       title: "Odbiór to nie nadawanie",
       points: [
@@ -109,9 +135,16 @@ export const CATEGORIES: Category[] = [
     id: "woda",
     name: "Woda i filtracja",
     short: "Przechowywanie i uzdatnianie",
-    image: "/visual/cat-woda.jpg",
+    image: "/visual/produkty/woda-polecany.jpg",
     imageAlt: "Kanister na wodę i filtr na kamieniach nad strumieniem o zmierzchu",
     lead: "Zapas wody, filtr i sposób na jej uzdatnienie. To trzy różne rzeczy i warto je odróżniać.",
+    panel: "Zapas wody pitnej i sposoby na jej filtrowanie oraz oczyszczanie.",
+    tileLine: "Przechowywanie i uzdatnianie wody",
+    tiers: {
+      budzetowy: { title: "Kanister na wodę", blurb: "Bezpieczne przechowywanie zapasu wody pitnej." },
+      polecany: { title: "Filtr do wody", blurb: "Usuwa bakterie i pierwotniaki z wody ze strumienia czy jeziora." },
+      premium: { title: "Oczyszczacz pompowy", blurb: "Usuwa także wirusy. Duża wydajność dla całej rodziny." },
+    },
     explainer: {
       title: "Przechowywanie, filtracja, dezynfekcja",
       points: [
@@ -125,9 +158,16 @@ export const CATEGORIES: Category[] = [
     id: "ewakuacja",
     name: "Plecaki i ewakuacja",
     short: "Plecaki na szybkie wyjście",
-    image: "/visual/cat-ewakuacja.jpg",
+    image: "/visual/produkty/ewakuacja-polecany.jpg",
     imageAlt: "Plecak turystyczny na grani górskiej o zmierzchu",
     lead: "Plecak, który uniesiesz i szybko spakujesz. Pojemność, waga i wygoda liczą się bardziej niż wygląd.",
+    panel: "Plecak, który szybko spakujesz i wygodnie uniesiesz.",
+    tileLine: "Plecaki, torby, wyposażenie na wyjście",
+    tiers: {
+      budzetowy: { title: "Plecak podróżny 40 l", blurb: "Uporządkowane rzeczy i szybkie pakowanie." },
+      polecany: { title: "Plecak turystyczny 44 l", blurb: "Lekki, z regulowanym systemem nośnym na długi marsz." },
+      premium: { title: "Plecak modułowy 45 l", blurb: "Bardzo wytrzymały, z systemem MOLLE na moduły wyposażenia." },
+    },
     explainer: {
       title: "Jak dobrać plecak ewakuacyjny",
       points: [
@@ -141,9 +181,16 @@ export const CATEGORIES: Category[] = [
     id: "dom",
     name: "Domowa gotowość",
     short: "Apteczki i gotowe zestawy",
-    image: "/visual/cat-dom.jpg",
+    image: "/visual/produkty/dom-polecany.jpg",
     imageAlt: "Zapasy domowe na półce: słoiki, puszki, woda, apteczka i lampa",
     lead: "Apteczka i gotowe zestawy awaryjne sprzedawane jako jeden produkt, dla tych, którzy nie chcą kompletować wszystkiego sami.",
+    panel: "Apteczki i gotowe zestawy awaryjne sprzedawane jako jeden produkt.",
+    tileLine: "Apteczki, zestawy, niezbędne wyposażenie",
+    tiers: {
+      budzetowy: { title: "Apteczka podręczna", blurb: "Opatrunki na drobne urazy w domu i w plecaku." },
+      polecany: { title: "Gotowy zestaw awaryjny", blurb: "Plecak z wyposażeniem na pierwsze godziny poza domem." },
+      premium: { title: "Zestaw 72 h ze skrzynią", blurb: "Ponad 100 elementów w modułach i skrzynia na zapasy." },
+    },
     explainer: {
       title: "Gotowy zestaw czy własna lista",
       points: [
@@ -156,6 +203,9 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const PRODUCTS = products as Product[];
+
+/** Wizualizacja typu sprzętu dla poziomu (ogólna, bez marki) */
+export const tierImage = (c: CategoryId, t: Tier) => `/visual/produkty/${c}-${t}.jpg`;
 
 export const getCategory = (id: string) => CATEGORIES.find((c) => c.id === id);
 export const productsFor = (id: CategoryId) =>
