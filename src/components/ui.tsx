@@ -80,7 +80,7 @@ export const shortDate = (iso: string) =>
   new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "short", year: "numeric" }).format(new Date(iso));
 
 export const ytUrl = (v: Pick<Video, "youtubeId">) => `https://www.youtube.com/watch?v=${v.youtubeId}`;
-export const thumbOf = (v: Video) => v.thumbnail ?? `https://i.ytimg.com/vi/${v.youtubeId}/oar2.jpg`;
+export const thumbOf = (v: Video) => v.thumbnail ?? `https://i.ytimg.com/vi/${v.youtubeId}/maxresdefault.jpg`;
 
 /** Znacznik odcinka: "SYGNAŁ #16", "SYMULACJA", "SYGNAŁ TERAZ" */
 export function epTag(v: Video) {

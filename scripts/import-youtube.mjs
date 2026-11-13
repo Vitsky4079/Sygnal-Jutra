@@ -55,8 +55,8 @@ const imported = entries.map((e) => {
     fullTitle: full,
     description: desc || undefined,
     publishedAt: get(/<published>(.*?)<\/published>/),
-    // pionowa klatka 9:16 z oficjalnego CDN miniatur YouTube
-    thumbnail: `https://i.ytimg.com/vi/${id}/oar2.jpg`,
+    // oficjalna miniatura kanału (9:16 wycentrowane w kadrze 16:9; w UI kadrowane przez object-cover)
+    thumbnail: `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
     ...meta,
   };
 });
