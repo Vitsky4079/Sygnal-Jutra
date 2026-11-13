@@ -3,12 +3,12 @@
 /* Sygnał Jutra design tokens. Series colours are official and must not change. */
 :root {
   --bg: #080f1d;
-  --bg-2: #101b2c;
-  --surface: #142238;
+  --bg-2: #0d192a;
+  --surface: #132237;
   --bg-3: #0c1626;
   --line: #27354a;
-  --text: #f5f7fa;
-  --muted: #9aabbc;
+  --text: #f6f7fa;
+  --muted: #93a5ba;
 
   --sygnal: #ff713d;
   --kontekst: #36cff0;
@@ -139,3 +139,9 @@ h1, h2, h3, h4 {
 }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Sekwencja otwarcia: ukrycie do czasu przejęcia przez GSAP (klasę dodaje skrypt w <body>) */
+.intro-pending [data-intro] { opacity: 0; }
+.cover-link { position: relative; }
+.cover-link::after { content: ""; position: absolute; inset-inline: 0; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.group:hover .cover-link::after, .group:focus-visible .cover-link::after { transform: scaleX(1); }
