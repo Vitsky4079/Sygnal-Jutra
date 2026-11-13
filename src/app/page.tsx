@@ -1,143 +1,174 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { getArticles, getVideos } from "@/lib/content";
-import { SERIES, SITE, formatDate } from "@/lib/site";
-import { ArticleRow, EmptyState, SectionHead, SeriesLabel, VideoCard, accent, articleHref } from "@/components/ui";
+import type { Video } from "@/lib/content/types";
+import { PLANB_CATEGORIES, SERIES, SITE } from "@/lib/site";
+import { ArticleRow, SectionHead, VideoCard, accent, epTag, shortDate, thumbOf, ytUrl } from "@/components/ui";
+import { VideoPlayer } from "@/components/VideoPlayer";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 
+function Row({ v }: { v: Video }) {
+  const s = SERIES[v.series];
+  const tag = epTag(v);
+  return (
+    <li style={accent(s.color)} className="border-b border-line">
+      <a href={ytUrl(v)} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-[4.25rem_1fr] gap-4 py-4">
+        <time dateTime={v.publishedAt} className="meta pt-1 leading-tight">{shortDate(v.publishedAt).replace(/ \d{4}$/, "")}</time>
+        <span>
+          <span className="meta text-accent">{s.name}{tag && ` ${tag}`}</span>
+          <span className="mt-1 block font-display text-[1.02rem] font-bold leading-snug group-hover:underline decoration-accent underline-offset-4">{v.title}</span>
+        </span>
+      </a>
+    </li>
+  );
+}
+
 export default async function Home() {
-  const [articles, videos] = await Promise.all([getArticles(), getVideos()]);
-  const lead = articles.find((a) => a.featured) ?? articles[0];
-  const secondary = articles.filter((a) => a !== lead).slice(0, 3);
-  const latest = articles.filter((a) => a !== lead && !secondary.includes(a)).slice(0, 8);
-  const kontekst = articles.find((a) => a.series === "kontekst");
-  const planb = articles.filter((a) => a.series === "plan-b").slice(0, 3);
+  const [videos, articles] = await Promise.all([getVideos(), getArticles()]);
+  const news = videos.filter((v) => v.series === "sygnal");
+  const kontekst = videos.filter((v) => v.series === "kontekst");
+  const planb = videos.filter((v) => v.series === "plan-b");
+
+  const lead = news[0] ?? videos[0];
+  const second = news.slice(1, 3);
+  const feed = videos.filter((v) => v !== lead && !second.includes(v)).slice(0, 9);
 
   return (
     <>
-      {/* Lead */}
-      <section className="border-b border-line">
-        <div className="wrap grid gap-10 py-10 md:py-16 lg:grid-cols-12">
-          {lead ? (
-            <>
-              <article className="lg:col-span-8" style={accent(SERIES[lead.series].color)}>
-                {lead.image && (
-                  <div className="relative mb-6 aspect-[16/9] overflow-hidden border border-line">
-                    <Image src={lead.image.src} alt={lead.image.alt} fill priority sizes="(min-width:1024px) 66vw, 100vw" className="object-cover" />
-                  </div>
-                )}
-                <div className="flex items-center gap-4">
-                  <SeriesLabel series={lead.series} />
-                  <time dateTime={lead.publishedAt} className="text-sm text-muted">{formatDate(lead.publishedAt)}</time>
-                </div>
-                <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
-                  <Link href={articleHref(lead)} className="hover:underline decoration-accent decoration-4 underline-offset-[6px]">{lead.title}</Link>
-                </h1>
-                {lead.deck && <p className="mt-4 max-w-2xl text-lg text-muted">{lead.deck}</p>}
-              </article>
-              <aside className="lg:col-span-4 lg:border-l lg:border-line lg:pl-8" aria-label="Pozostałe tematy">
-                {secondary.map((a) => <ArticleRow key={a.slug} article={a} />)}
-              </aside>
-            </>
-          ) : (
-            <>
-              <div className="lg:col-span-7">
-                <p className="label text-muted">Niezależny serwis · Polska</p>
-                <h1 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-7xl">
-                  Świat się zmienia.<br />Zrozum dlaczego.
-                </h1>
-                <p className="mt-6 max-w-xl text-lg text-muted">{SITE.description}</p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/wideo" className="label bg-text px-6 py-3.5 text-bg hover:bg-sygnal">Oglądaj wideo</Link>
-                  <Link href="/newsletter" className="label border border-line px-6 py-3.5 hover:border-text">Newsletter</Link>
-                </div>
+      {/* 1. LEAD: pionowy materiał + nagłówek + strumień najnowszych */}
+      {lead && (
+        <section className="border-b border-line" aria-label="Główny materiał">
+          <div className="wrap grid gap-x-10 gap-y-8 py-8 md:py-12 lg:grid-cols-12">
+            <div className="order-2 lg:order-1 lg:col-span-3" style={accent(SERIES[lead.series].color)}>
+              <div className="mx-auto max-w-[17rem] lg:max-w-none">
+                <VideoPlayer id={lead.youtubeId} title={lead.title} thumbnail={thumbOf(lead)} color={SERIES[lead.series].color} />
               </div>
-              <ol className="lg:col-span-5 lg:border-l lg:border-line lg:pl-10" aria-label="Trzy serie">
-                {Object.values(SERIES).map((s, i) => (
-                  <li key={s.key} style={accent(s.color)} className="border-b border-line last:border-b-0">
-                    <Link href={s.href} className="group grid grid-cols-[2.5rem_1fr] gap-x-3 py-6">
-                      <span className="font-display text-sm font-bold text-muted">0{i + 1}</span>
+            </div>
+
+            <article className="order-1 flex flex-col lg:order-2 lg:col-span-5" style={accent(SERIES[lead.series].color)}>
+              <p className="meta flex items-center gap-3">
+                <span className="label text-accent">{SERIES[lead.series].name} {epTag(lead)}</span>
+                <span>{shortDate(lead.publishedAt)}</span>
+              </p>
+              <h1 className="hl mt-4 text-[2.15rem] md:text-5xl xl:text-[3.4rem]">{lead.title}</h1>
+              {lead.description && <p className="mt-5 max-w-[34rem] text-lg leading-relaxed text-muted">{lead.description}</p>}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href={ytUrl(lead)} target="_blank" rel="noopener noreferrer" className="label inline-flex items-center gap-2 border border-line px-5 py-3 hover:border-accent hover:text-accent">
+                  Otwórz na YouTube <ArrowUpRight aria-hidden size={14} />
+                </a>
+              </div>
+
+              {second.length > 0 && (
+                <div className="mt-auto grid gap-6 border-t border-line pt-6 sm:grid-cols-2 lg:mt-10">
+                  {second.map((v) => (
+                    <a key={v.slug} href={ytUrl(v)} target="_blank" rel="noopener noreferrer" className="group grid grid-cols-[4.5rem_1fr] gap-4" style={accent(SERIES[v.series].color)}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={thumbOf(v)} alt="" loading="lazy" className="aspect-[9/16] w-full border border-line object-cover" />
                       <span>
-                        <span className="label flex items-center gap-2 text-accent"><span aria-hidden className="size-2 bg-accent" />{s.name} · {s.kind}</span>
-                        <span className="mt-2 block text-muted group-hover:text-text">{s.blurb}</span>
+                        <span className="meta text-accent">{SERIES[v.series].name} {epTag(v)}</span>
+                        <span className="mt-1 block font-display text-[0.98rem] font-bold leading-snug group-hover:underline decoration-accent underline-offset-4">{v.title}</span>
                       </span>
-                    </Link>
-                  </li>
-                ))}
-              </ol>
-            </>
-          )}
-        </div>
-      </section>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </article>
 
-      {/* Najnowsze sygnały */}
-      <section className="wrap mt-16" aria-labelledby="najnowsze">
-        <SectionHead title="Najnowsze sygnały" href="/sygnal" color={SERIES.sygnal.color} />
-        <h2 id="najnowsze" className="sr-only">Najnowsze sygnały</h2>
-        {latest.length ? (
-          latest.map((a) => <ArticleRow key={a.slug} article={a} />)
-        ) : (
-          <div className="mt-6"><EmptyState title="Pierwsze materiały w przygotowaniu." color={SERIES.sygnal.color}>Gdy redakcja opublikuje pierwszy materiał, pojawi się tutaj. Do tego czasu zajrzyj do wideo.</EmptyState></div>
-        )}
-      </section>
-
-      {/* KONTEKST */}
-      <section className="mt-20 border-y border-line bg-bg-2" style={accent(SERIES.kontekst.color)}>
-        <div className="wrap grid gap-8 py-14 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-5">
-            <p className="label text-accent">KONTEKST · Wyjaśniamy</p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight md:text-5xl">Zrozumieć, jak to działa.</h2>
+            <aside className="order-3 lg:col-span-4 lg:border-l lg:border-line lg:pl-8" aria-labelledby="najnowsze">
+              <h2 id="najnowsze" className="label flex items-center gap-3 border-b border-text pb-3">
+                <span aria-hidden className="size-2 animate-pulse bg-sygnal" /> Najnowsze sygnały
+              </h2>
+              <ul>{feed.slice(0, 7).map((v) => <Row key={v.slug} v={v} />)}</ul>
+              <Link href="/wideo" className="label mt-4 inline-block text-muted hover:text-text">Całe archiwum →</Link>
+            </aside>
           </div>
-          <div className="md:col-span-7">
-            {kontekst ? (
-              <article>
-                <h3 className="font-display text-2xl font-bold"><Link href={articleHref(kontekst)} className="hover:underline">{kontekst.title}</Link></h3>
-                {kontekst.deck && <p className="mt-3 text-muted">{kontekst.deck}</p>}
-              </article>
-            ) : (
-              <p className="max-w-xl text-lg text-muted">{SERIES.kontekst.blurb}</p>
-            )}
-            <Link href="/kontekst" className="label mt-6 inline-block border-b-2 border-accent pb-1 text-accent">Archiwum KONTEKST →</Link>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* PLAN B */}
-      <section className="wrap mt-20" style={accent(SERIES["plan-b"].color)}>
-        <SectionHead title="PLAN B · Gotowość" href="/plan-b" color={SERIES["plan-b"].color} />
-        <div className="mt-8 grid gap-8 md:grid-cols-12">
-          <p className="text-lg text-muted md:col-span-5">{SERIES["plan-b"].blurb} Rekomendacje sprzętu są zawsze oznaczone i oddzielone od treści redakcyjnych.</p>
-          <div className="md:col-span-7">
-            {planb.length ? planb.map((a) => <ArticleRow key={a.slug} article={a} />) : <EmptyState title="Poradniki w przygotowaniu." color={SERIES["plan-b"].color} />}
-            <Link href="/sklep" className="label mt-5 inline-block border-b-2 border-accent pb-1 text-accent">Sklep PLAN B →</Link>
-          </div>
-        </div>
-      </section>
+      {articles.length > 0 && (
+        <section className="wrap mt-12">
+          <SectionHead title="Teksty" href="/sygnal" />
+          {articles.slice(0, 5).map((a) => <ArticleRow key={a.slug} article={a} />)}
+        </section>
+      )}
 
-      {/* Wideo */}
-      <section className="wrap mt-20">
-        <SectionHead title="Wideo" href="/wideo" linkLabel="Całe archiwum" />
-        {videos.length ? (
-          <ul className="mt-6 flex snap-x gap-4 overflow-x-auto pb-4" aria-label="Najnowsze wideo">
-            {videos.slice(0, 8).map((v) => (
-              <li key={v.slug} className="w-44 shrink-0 snap-start md:w-52"><VideoCard video={v} /></li>
+      {/* 2. KONTEKST: typograficzny panel z numerami odcinków */}
+      <section className="mt-16 border-y border-line bg-bg-3" style={accent(SERIES.kontekst.color)} aria-labelledby="kontekst">
+        <div className="wrap grid gap-10 py-14 lg:grid-cols-12 lg:py-20">
+          <div className="lg:col-span-4">
+            <p className="label flex items-center gap-3 text-accent"><span aria-hidden className="h-4 w-1 bg-accent" />KONTEKST · Wyjaśniamy</p>
+            <h2 id="kontekst" className="hl mt-5 text-4xl md:text-5xl">Jak to naprawdę działa.</h2>
+            <p className="mt-5 max-w-sm text-muted">{SERIES.kontekst.blurb}</p>
+            <Link href="/kontekst" className="label mt-6 inline-block border-b-2 border-accent pb-1 text-accent">Wszystkie odcinki →</Link>
+          </div>
+          <div className="grid gap-px bg-line sm:grid-cols-2 lg:col-span-8">
+            {kontekst.slice(0, 2).map((v) => (
+              <a key={v.slug} href={ytUrl(v)} target="_blank" rel="noopener noreferrer" className="group relative grid grid-cols-[1fr_7rem] gap-4 bg-bg-3 p-6 sm:grid-cols-1 sm:gap-6">
+                <span className="relative z-10 flex flex-col">
+                  <span className="font-display text-7xl font-extrabold leading-none text-accent md:text-8xl">{String(v.episode ?? "").padStart(2, "0")}</span>
+                  <span className="meta mt-3">{shortDate(v.publishedAt)}</span>
+                  <span className="hl mt-2 text-xl group-hover:underline decoration-accent underline-offset-4 md:text-2xl">{v.title}</span>
+                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={thumbOf(v)} alt="" loading="lazy" className="aspect-[9/16] w-full self-end border border-line object-cover sm:max-w-[9rem]" />
+              </a>
             ))}
-          </ul>
-        ) : (
-          <div className="mt-6">
-            <EmptyState title="Wideo znajdziesz na naszych kanałach.">
-              <a className="underline" href={SITE.social.youtube} target="_blank" rel="noopener noreferrer">Otwórz kanał na YouTube</a>
-            </EmptyState>
           </div>
-        )}
+        </div>
       </section>
 
-      {/* Newsletter */}
+      {/* 3. PLAN B: lista kategorii + filmy + zapowiedź sklepu */}
+      <section className="wrap mt-16" style={accent(SERIES["plan-b"].color)} aria-labelledby="planb">
+        <SectionHead title="PLAN B · Gotowość" href="/plan-b" color={SERIES["plan-b"].color} linkLabel="Centrum PLAN B" />
+        <div className="mt-8 grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 id="planb" className="hl text-4xl md:text-[2.6rem]">Spokojnie. Masz plan.</h2>
+            <p className="mt-4 text-muted">{SERIES["plan-b"].blurb}</p>
+            <ol className="mt-6 divide-y divide-line border-y border-line">
+              {PLANB_CATEGORIES.map((c, i) => (
+                <li key={c} className="flex items-baseline gap-4 py-3">
+                  <span className="meta">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="font-display font-semibold">{c}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="lg:col-span-8">
+            <ul className="grid grid-cols-3 gap-4">
+              {planb.slice(0, 3).map((v) => <li key={v.slug}><VideoCard video={v} /></li>)}
+            </ul>
+            <div className="mt-8 flex flex-col gap-4 border border-line bg-bg-2 p-6 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p className="label text-accent">Sklep PLAN B · wkrótce</p>
+                <p className="mt-1 max-w-md text-muted">Wyselekcjonowany sprzęt i poradniki PDF. Linki partnerskie będą zawsze oznaczone.</p>
+              </div>
+              <Link href="/sklep" className="label shrink-0 bg-planb px-5 py-3 text-bg hover:bg-text">Zobacz plan sklepu</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Biblioteka wideo */}
+      <section className="mt-20 border-t border-line pt-8">
+        <div className="wrap">
+          <SectionHead title="Biblioteka wideo" href="/wideo" linkLabel="Wszystkie filmy" />
+        </div>
+        <ul className="no-scrollbar wrap mt-6 flex snap-x gap-4 overflow-x-auto pb-4" aria-label="Najnowsze filmy">
+          {videos.slice(0, 12).map((v) => (
+            <li key={v.slug} className="w-40 shrink-0 snap-start md:w-52"><VideoCard video={v} /></li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 5. Newsletter */}
       <section className="wrap mt-20">
         <div className="grid gap-8 border-t-4 border-text pt-10 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl font-extrabold md:text-4xl">Najważniejsze sygnały. Bez informacyjnego szumu.</h2>
-            <p className="mt-3 text-muted">Wybrane materiały prosto na e-mail.</p>
+            <h2 className="hl text-3xl md:text-4xl">Najważniejsze sygnały. Bez informacyjnego szumu.</h2>
+            <p className="mt-3 text-muted">Wybrane materiały z SYGNAŁ, KONTEKST i PLAN B prosto na e-mail. Obserwuj nas też na{" "}
+              <a className="underline" href={SITE.social.youtube} target="_blank" rel="noopener noreferrer">YouTube</a>,{" "}
+              <a className="underline" href={SITE.social.tiktok} target="_blank" rel="noopener noreferrer">TikToku</a> i{" "}
+              <a className="underline" href={SITE.social.instagram} target="_blank" rel="noopener noreferrer">Instagramie</a>.</p>
           </div>
           <NewsletterSignup />
         </div>

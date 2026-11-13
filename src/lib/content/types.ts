@@ -32,6 +32,9 @@ export type Video = {
   episode?: number;
   publishedAt: string;
   youtubeId: string;
+  fullTitle?: string;
+  simulation?: boolean;
+  live?: boolean;
   thumbnail?: string;
   relatedArticle?: string;
 };

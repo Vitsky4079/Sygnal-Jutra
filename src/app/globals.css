@@ -5,6 +5,7 @@
   --bg: #080f1d;
   --bg-2: #101b2c;
   --surface: #142238;
+  --bg-3: #0c1626;
   --line: #27354a;
   --text: #f5f7fa;
   --muted: #9aabbc;
@@ -20,6 +21,7 @@
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
   --color-surface: var(--surface);
+  --color-bg-3: var(--bg-3);
   --color-line: var(--line);
   --color-text: var(--text);
   --color-muted: var(--muted);
@@ -119,3 +121,21 @@ h1, h2, h3, h4 {
   to { opacity: 1; transform: none; }
 }
 .rise { animation: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+/* Metadane: data, numer odcinka */
+.meta {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hl { /* nagłówek redakcyjny */
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

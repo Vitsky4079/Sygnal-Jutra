@@ -76,21 +76,33 @@ export function ArticleRow({ article }: { article: Article }) {
   );
 }
 
-export function VideoCard({ video }: { video: Video }) {
+export const shortDate = (iso: string) =>
+  new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "short", year: "numeric" }).format(new Date(iso));
+
+export const ytUrl = (v: Pick<Video, "youtubeId">) => `https://www.youtube.com/watch?v=${v.youtubeId}`;
+export const thumbOf = (v: Video) => v.thumbnail ?? `https://i.ytimg.com/vi/${v.youtubeId}/oar2.jpg`;
+
+/** Znacznik odcinka: "SYGNAŁ #16", "SYMULACJA", "SYGNAŁ TERAZ" */
+export function epTag(v: Video) {
+  if (v.simulation) return "Symulacja";
+  if (v.live) return "Teraz";
+  return v.episode ? `#${String(v.episode).padStart(2, "0")}` : "";
+}
+
+export function VideoCard({ video, priority = false }: { video: Video; priority?: boolean }) {
   const s = SERIES[video.series];
-  const thumb = video.thumbnail ?? `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`;
+  const tag = epTag(video);
   return (
     <article className="group w-full" style={accent(s.color)}>
-      <a href={`https://www.youtube.com/watch?v=${video.youtubeId}`} target="_blank" rel="noopener noreferrer" className="block">
+      <a href={ytUrl(video)} target="_blank" rel="noopener noreferrer" className="block">
         <div className="relative aspect-[9/16] overflow-hidden border border-line bg-surface">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={thumb} alt="" loading="lazy" className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+          <img src={thumbOf(video)} alt="" loading={priority ? "eager" : "lazy"} className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
           <span className="absolute inset-x-0 bottom-0 h-1 bg-accent" />
         </div>
         <div className="mt-3">
-          <SeriesLabel series={video.series} />
-          <h3 className="mt-1 font-display text-base font-bold leading-snug">{video.title}</h3>
-          <time dateTime={video.publishedAt} className="text-sm text-muted">{formatDate(video.publishedAt)}</time>
+          <p className="meta flex items-center gap-2"><span className="text-accent">{s.name}{tag && ` ${tag}`}</span><span>·</span><time dateTime={video.publishedAt}>{shortDate(video.publishedAt)}</time></p>
+          <h3 className="mt-1 font-display text-[0.95rem] font-bold leading-snug group-hover:underline decoration-accent underline-offset-4">{video.title}</h3>
         </div>
       </a>
     </article>

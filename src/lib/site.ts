@@ -56,3 +56,12 @@ export const NAV = [
 export function formatDate(iso: string) {
   return new Intl.DateTimeFormat("pl-PL", { day: "numeric", month: "long", year: "numeric" }).format(new Date(iso));
 }
+
+export const PLANB_CATEGORIES = [
+  "Blackout i zasilanie awaryjne",
+  "Woda i żywność",
+  "Łączność w kryzysie",
+  "Ewakuacja i plecak awaryjny",
+  "Gotowość domowa",
+  "Listy kontrolne",
+];

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, IBM_Plex_Sans } from "next/font/google";
+import { Archivo, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -22,17 +22,25 @@ const plex = IBM_Plex_Sans({
   display: "swap",
 });
 
+const mono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: { default: `${SITE.name}. ${SITE.tagline}`, template: `%s | ${SITE.name}` },
   description: SITE.description,
-  openGraph: { siteName: SITE.name, locale: "pl_PL", type: "website" },
+  openGraph: { siteName: SITE.name, locale: "pl_PL", type: "website", images: [{ url: "/brand/og.jpg", width: 2000, height: 1125 }] },
+  twitter: { card: "summary_large_image", images: ["/brand/og.jpg"] },
   alternates: { canonical: "/", types: { "application/rss+xml": "/rss.xml" } },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pl" className={`${archivo.variable} ${plex.variable}`}>
+    <html lang="pl" className={`${archivo.variable} ${plex.variable} ${mono.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#tresc"
