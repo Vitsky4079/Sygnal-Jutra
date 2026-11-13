@@ -21,16 +21,19 @@ export function CinematicHero({ desktopSrcSet, mobileSrcSet, fallback }: { deskt
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return ready();
     gsap.registerPlugin(ScrollTrigger);
 
+    let tl: gsap.core.Timeline | undefined;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.fromTo("[data-c='img']", { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1.8, ease: "power2.out" }, 0)
-        .fromTo("[data-c='line']", { yPercent: 110 }, { yPercent: 0, duration: 0.9, stagger: 0.08 }, 0.25)
+        // y: 0 jawnie: inaczej GSAP przejmuje translateY(110%) z CSS jako stałe przesunięcie i tekst zostaje schowany
+        .fromTo("[data-c='line']", { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, duration: 0.9, stagger: 0.08 }, 0.25)
         .fromTo("[data-c='fade']", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08 }, 0.6);
       ready();
       gsap.to("[data-c='plx']", { yPercent: 8, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
       gsap.to("[data-c='copy']", { y: -50, opacity: 0.25, ease: "none", scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true } });
     }, el);
-    const safety = window.setTimeout(ready, 3000);
+    // Zabezpieczenie: po 3 s treść ma być widoczna niezależnie od stanu animacji
+    const safety = window.setTimeout(() => { ready(); tl?.progress(1); }, 3000);
     return () => { window.clearTimeout(safety); ctx.revert(); };
   }, []);
 
